@@ -7,4 +7,6 @@ models/*.pkl
 models/*.joblib
 models/**/*.pkl
 models/**/*.joblib
+models/**/*.pt
+!models/neural_network/artifacts/neural_network.pt
 .env
