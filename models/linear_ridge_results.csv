@@ -1,0 +1,3 @@
+Model,RMSE,MAE,R2
+Linear Regression,426.36,263.31,0.5896
+Ridge Regression,426.37,263.31,0.5896
