@@ -9,4 +9,6 @@ models/**/*.pkl
 models/**/*.joblib
 models/**/*.pt
 !models/neural_network/artifacts/neural_network.pt
+!models/gradient_boosting/artifacts/gradient_boosting.joblib
+!models/linear_ridge/artifacts/linear_ridge.joblib
 .env
