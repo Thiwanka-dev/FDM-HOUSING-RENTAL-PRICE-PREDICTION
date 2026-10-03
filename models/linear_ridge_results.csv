@@ -1,3 +1,4 @@
 Model,RMSE,MAE,R2
-Linear Regression,426.36,263.31,0.5896
-Ridge Regression,426.37,263.31,0.5896
+Linear Regression,399.01,242.04,0.6406
+Ridge Regression,399.03,242.02,0.6405
+Tuned Ridge Regression,399.40,242.01,0.6399
