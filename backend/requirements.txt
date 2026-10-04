@@ -1,0 +1,3 @@
+# Backend dependencies, installed on top of the project requirements.txt.
+fastapi==0.142.2
+uvicorn==0.54.0

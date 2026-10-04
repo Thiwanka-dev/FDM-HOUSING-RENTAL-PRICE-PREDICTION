@@ -1,0 +1,2489 @@
+{
+ "states": [
+  {
+   "code": "al",
+   "name": "Alabama",
+   "regions": [
+    {
+     "name": "auburn",
+     "lat": 32.6149,
+     "long": -85.4616
+    },
+    {
+     "name": "birmingham",
+     "lat": 33.429,
+     "long": -86.7867
+    },
+    {
+     "name": "dothan",
+     "lat": 31.2293,
+     "long": -85.3971
+    },
+    {
+     "name": "florence / muscle shoals",
+     "lat": 34.8074,
+     "long": -87.67
+    },
+    {
+     "name": "gadsden-anniston",
+     "lat": 33.9483,
+     "long": -85.7625
+    },
+    {
+     "name": "huntsville / decatur",
+     "lat": 34.7084,
+     "long": -86.6704
+    },
+    {
+     "name": "mobile",
+     "lat": 30.6583,
+     "long": -88.0883
+    },
+    {
+     "name": "montgomery",
+     "lat": 32.3705,
+     "long": -86.2243
+    },
+    {
+     "name": "tuscaloosa",
+     "lat": 33.1826,
+     "long": -87.5218
+    }
+   ]
+  },
+  {
+   "code": "ak",
+   "name": "Alaska",
+   "regions": [
+    {
+     "name": "anchorage / mat-su",
+     "lat": 61.2037,
+     "long": -149.838
+    },
+    {
+     "name": "fairbanks",
+     "lat": 64.8378,
+     "long": -147.716
+    },
+    {
+     "name": "kenai peninsula",
+     "lat": 60.4916,
+     "long": -151.236
+    },
+    {
+     "name": "southeast alaska",
+     "lat": 58.3628,
+     "long": -134.529
+    }
+   ]
+  },
+  {
+   "code": "az",
+   "name": "Arizona",
+   "regions": [
+    {
+     "name": "flagstaff / sedona",
+     "lat": 35.1966,
+     "long": -111.651
+    },
+    {
+     "name": "mohave county",
+     "lat": 35.1134,
+     "long": -114.579
+    },
+    {
+     "name": "phoenix",
+     "lat": 33.4511,
+     "long": -111.962
+    },
+    {
+     "name": "prescott",
+     "lat": 34.5917,
+     "long": -112.426
+    },
+    {
+     "name": "show low",
+     "lat": 34.2593,
+     "long": -110.0
+    },
+    {
+     "name": "sierra vista",
+     "lat": 31.5454,
+     "long": -110.267
+    },
+    {
+     "name": "tucson",
+     "lat": 32.2434,
+     "long": -110.944
+    },
+    {
+     "name": "yuma",
+     "lat": 32.7003,
+     "long": -114.633
+    }
+   ]
+  },
+  {
+   "code": "ar",
+   "name": "Arkansas",
+   "regions": [
+    {
+     "name": "fayetteville",
+     "lat": 36.1151,
+     "long": -94.1699
+    },
+    {
+     "name": "fort smith",
+     "lat": 35.3653,
+     "long": -94.3784
+    },
+    {
+     "name": "jonesboro",
+     "lat": 35.833,
+     "long": -90.6965
+    },
+    {
+     "name": "little rock",
+     "lat": 34.7748,
+     "long": -92.3958
+    },
+    {
+     "name": "texarkana",
+     "lat": 33.4619,
+     "long": -94.0774
+    }
+   ]
+  },
+  {
+   "code": "ca",
+   "name": "California",
+   "regions": [
+    {
+     "name": "SF bay area",
+     "lat": 37.6817,
+     "long": -122.078
+    },
+    {
+     "name": "bakersfield",
+     "lat": 35.3541,
+     "long": -119.063
+    },
+    {
+     "name": "chico",
+     "lat": 39.7362,
+     "long": -121.847
+    },
+    {
+     "name": "fresno / madera",
+     "lat": 36.8121,
+     "long": -119.762
+    },
+    {
+     "name": "gold country",
+     "lat": 38.7168,
+     "long": -120.964
+    },
+    {
+     "name": "hanford-corcoran",
+     "lat": 36.3314,
+     "long": -119.654
+    },
+    {
+     "name": "humboldt county",
+     "lat": 40.8617,
+     "long": -124.1115
+    },
+    {
+     "name": "imperial county",
+     "lat": 32.9863,
+     "long": -115.52
+    },
+    {
+     "name": "inland empire",
+     "lat": 34.0282,
+     "long": -117.354
+    },
+    {
+     "name": "los angeles",
+     "lat": 34.0897,
+     "long": -118.3595
+    },
+    {
+     "name": "mendocino county",
+     "lat": 39.1328,
+     "long": -123.195
+    },
+    {
+     "name": "merced",
+     "lat": 37.3034,
+     "long": -120.49
+    },
+    {
+     "name": "modesto",
+     "lat": 37.6717,
+     "long": -120.974
+    },
+    {
+     "name": "monterey bay",
+     "lat": 36.6722,
+     "long": -121.843
+    },
+    {
+     "name": "orange county",
+     "lat": 33.7078,
+     "long": -117.846
+    },
+    {
+     "name": "palm springs",
+     "lat": 33.7643,
+     "long": -116.377
+    },
+    {
+     "name": "redding",
+     "lat": 40.5729,
+     "long": -122.3545
+    },
+    {
+     "name": "reno / tahoe",
+     "lat": 39.5249,
+     "long": -119.785
+    },
+    {
+     "name": "sacramento",
+     "lat": 38.6239,
+     "long": -121.378
+    },
+    {
+     "name": "san diego",
+     "lat": 32.8036,
+     "long": -117.151
+    },
+    {
+     "name": "san luis obispo",
+     "lat": 35.2982,
+     "long": -120.665
+    },
+    {
+     "name": "santa barbara",
+     "lat": 34.4312,
+     "long": -119.758
+    },
+    {
+     "name": "santa maria",
+     "lat": 34.9282,
+     "long": -120.442
+    },
+    {
+     "name": "siskiyou county",
+     "lat": 41.5497,
+     "long": -122.387
+    },
+    {
+     "name": "stockton",
+     "lat": 37.9734,
+     "long": -121.3335
+    },
+    {
+     "name": "susanville",
+     "lat": 39.5199,
+     "long": -121.2965
+    },
+    {
+     "name": "ventura county",
+     "lat": 34.2284,
+     "long": -119.035
+    },
+    {
+     "name": "visalia-tulare",
+     "lat": 36.3008,
+     "long": -119.316
+    },
+    {
+     "name": "yuba-sutter",
+     "lat": 39.1343,
+     "long": -121.582
+    }
+   ]
+  },
+  {
+   "code": "co",
+   "name": "Colorado",
+   "regions": [
+    {
+     "name": "boulder",
+     "lat": 40.0001,
+     "long": -105.142
+    },
+    {
+     "name": "colorado springs",
+     "lat": 38.876,
+     "long": -104.784
+    },
+    {
+     "name": "denver",
+     "lat": 39.7131,
+     "long": -104.964
+    },
+    {
+     "name": "eastern CO",
+     "lat": 39.747,
+     "long": -104.428
+    },
+    {
+     "name": "fort collins / north CO",
+     "lat": 40.5193,
+     "long": -105.048
+    },
+    {
+     "name": "high rockies",
+     "lat": 39.6005,
+     "long": -106.515
+    },
+    {
+     "name": "pueblo",
+     "lat": 38.2855,
+     "long": -104.622
+    },
+    {
+     "name": "western slope",
+     "lat": 39.0157,
+     "long": -107.88
+    }
+   ]
+  },
+  {
+   "code": "ct",
+   "name": "Connecticut",
+   "regions": [
+    {
+     "name": "eastern CT",
+     "lat": 41.4622,
+     "long": -72.085
+    },
+    {
+     "name": "hartford",
+     "lat": 41.7569,
+     "long": -72.6947
+    },
+    {
+     "name": "new haven",
+     "lat": 41.3184,
+     "long": -72.9318
+    },
+    {
+     "name": "northwest CT",
+     "lat": 41.3917,
+     "long": -73.4532
+    }
+   ]
+  },
+  {
+   "code": "de",
+   "name": "Delaware",
+   "regions": [
+    {
+     "name": "delaware",
+     "lat": 39.7394,
+     "long": -75.5491
+    }
+   ]
+  },
+  {
+   "code": "dc",
+   "name": "District of Columbia",
+   "regions": [
+    {
+     "name": "washington, DC",
+     "lat": 38.9038,
+     "long": -77.064
+    }
+   ]
+  },
+  {
+   "code": "fl",
+   "name": "Florida",
+   "regions": [
+    {
+     "name": "daytona beach",
+     "lat": 29.1704,
+     "long": -81.0371
+    },
+    {
+     "name": "florida keys",
+     "lat": 24.6,
+     "long": -81.6714
+    },
+    {
+     "name": "ft myers / SW florida",
+     "lat": 26.522,
+     "long": -81.8091
+    },
+    {
+     "name": "gainesville",
+     "lat": 29.6471,
+     "long": -82.3873
+    },
+    {
+     "name": "heartland florida",
+     "lat": 27.5097,
+     "long": -81.4421
+    },
+    {
+     "name": "jacksonville",
+     "lat": 30.282,
+     "long": -81.5831
+    },
+    {
+     "name": "lakeland",
+     "lat": 28.0381,
+     "long": -81.9488
+    },
+    {
+     "name": "north central FL",
+     "lat": 30.1756,
+     "long": -82.6637
+    },
+    {
+     "name": "ocala",
+     "lat": 29.1056,
+     "long": -82.1526
+    },
+    {
+     "name": "okaloosa / walton",
+     "lat": 30.3974,
+     "long": -86.4692
+    },
+    {
+     "name": "orlando",
+     "lat": 28.5483,
+     "long": -81.3763
+    },
+    {
+     "name": "panama city",
+     "lat": 30.1694,
+     "long": -85.7147
+    },
+    {
+     "name": "pensacola",
+     "lat": 30.4756,
+     "long": -87.2167
+    },
+    {
+     "name": "sarasota-bradenton",
+     "lat": 27.3451,
+     "long": -82.501
+    },
+    {
+     "name": "south florida",
+     "lat": 25.8488,
+     "long": -80.18
+    },
+    {
+     "name": "space coast",
+     "lat": 28.1331,
+     "long": -80.6524
+    },
+    {
+     "name": "st augustine",
+     "lat": 29.8285,
+     "long": -81.3237
+    },
+    {
+     "name": "tallahassee",
+     "lat": 30.4682,
+     "long": -84.2793
+    },
+    {
+     "name": "tampa bay area",
+     "lat": 27.9913,
+     "long": -82.5268
+    },
+    {
+     "name": "treasure coast",
+     "lat": 27.2625,
+     "long": -80.3436
+    }
+   ]
+  },
+  {
+   "code": "ga",
+   "name": "Georgia",
+   "regions": [
+    {
+     "name": "albany",
+     "lat": 31.6048,
+     "long": -84.1757
+    },
+    {
+     "name": "athens",
+     "lat": 33.9475,
+     "long": -83.418
+    },
+    {
+     "name": "atlanta",
+     "lat": 33.8687,
+     "long": -84.3487
+    },
+    {
+     "name": "augusta",
+     "lat": 33.4805,
+     "long": -82.0731
+    },
+    {
+     "name": "brunswick",
+     "lat": 31.2252,
+     "long": -81.5305
+    },
+    {
+     "name": "columbus",
+     "lat": 32.4779,
+     "long": -84.9505
+    },
+    {
+     "name": "macon / warner robins",
+     "lat": 32.8095,
+     "long": -83.6766
+    },
+    {
+     "name": "northwest GA",
+     "lat": 34.097,
+     "long": -84.5824
+    },
+    {
+     "name": "savannah / hinesville",
+     "lat": 32.0415,
+     "long": -81.1559
+    },
+    {
+     "name": "statesboro",
+     "lat": 32.4408,
+     "long": -81.774
+    },
+    {
+     "name": "valdosta",
+     "lat": 30.8727,
+     "long": -83.2808
+    }
+   ]
+  },
+  {
+   "code": "hi",
+   "name": "Hawaii",
+   "regions": [
+    {
+     "name": "hawaii",
+     "lat": 21.3062,
+     "long": -157.832
+    }
+   ]
+  },
+  {
+   "code": "id",
+   "name": "Idaho",
+   "regions": [
+    {
+     "name": "boise",
+     "lat": 43.6144,
+     "long": -116.2905
+    },
+    {
+     "name": "east idaho",
+     "lat": 43.4931,
+     "long": -112.014
+    },
+    {
+     "name": "lewiston / clarkston",
+     "lat": 46.4027,
+     "long": -117.048
+    },
+    {
+     "name": "pullman / moscow",
+     "lat": 46.7352,
+     "long": -117.169
+    },
+    {
+     "name": "spokane / coeur d'alene",
+     "lat": 47.6727,
+     "long": -117.246
+    },
+    {
+     "name": "twin falls",
+     "lat": 42.5581,
+     "long": -114.46
+    }
+   ]
+  },
+  {
+   "code": "il",
+   "name": "Illinois",
+   "regions": [
+    {
+     "name": "bloomington-normal",
+     "lat": 40.4892,
+     "long": -88.9836
+    },
+    {
+     "name": "champaign urbana",
+     "lat": 40.1115,
+     "long": -88.2386
+    },
+    {
+     "name": "chicago",
+     "lat": 41.9205,
+     "long": -87.6781
+    },
+    {
+     "name": "decatur",
+     "lat": 39.8432,
+     "long": -88.9311
+    },
+    {
+     "name": "la salle co",
+     "lat": 41.2496,
+     "long": -89.095
+    },
+    {
+     "name": "mattoon-charleston",
+     "lat": 39.4802,
+     "long": -88.1761
+    },
+    {
+     "name": "peoria",
+     "lat": 40.7111,
+     "long": -89.6176
+    },
+    {
+     "name": "quad cities, IA/IL",
+     "lat": 41.5385,
+     "long": -90.5531
+    },
+    {
+     "name": "rockford",
+     "lat": 42.2809,
+     "long": -89.0579
+    },
+    {
+     "name": "southern illinois",
+     "lat": 37.7257,
+     "long": -89.2158
+    },
+    {
+     "name": "springfield",
+     "lat": 39.7725,
+     "long": -89.6625
+    },
+    {
+     "name": "st louis, MO",
+     "lat": 38.6442,
+     "long": -90.3264
+    },
+    {
+     "name": "western IL",
+     "lat": 40.4605,
+     "long": -90.7099
+    }
+   ]
+  },
+  {
+   "code": "in",
+   "name": "Indiana",
+   "regions": [
+    {
+     "name": "bloomington",
+     "lat": 39.1481,
+     "long": -86.5159
+    },
+    {
+     "name": "evansville",
+     "lat": 37.9695,
+     "long": -87.5257
+    },
+    {
+     "name": "fort wayne",
+     "lat": 41.1053,
+     "long": -85.1189
+    },
+    {
+     "name": "indianapolis",
+     "lat": 39.8082,
+     "long": -86.1341
+    },
+    {
+     "name": "kokomo",
+     "lat": 40.4728,
+     "long": -86.1352
+    },
+    {
+     "name": "lafayette / west lafayette",
+     "lat": 40.4246,
+     "long": -86.9063
+    },
+    {
+     "name": "muncie / anderson",
+     "lat": 40.1694,
+     "long": -85.4262
+    },
+    {
+     "name": "richmond",
+     "lat": 39.8323,
+     "long": -84.8936
+    },
+    {
+     "name": "south bend / michiana",
+     "lat": 41.681,
+     "long": -86.2327
+    },
+    {
+     "name": "terre haute",
+     "lat": 39.4634,
+     "long": -87.3992
+    }
+   ]
+  },
+  {
+   "code": "ia",
+   "name": "Iowa",
+   "regions": [
+    {
+     "name": "ames",
+     "lat": 42.0226,
+     "long": -93.651
+    },
+    {
+     "name": "cedar rapids",
+     "lat": 42.0127,
+     "long": -91.6567
+    },
+    {
+     "name": "des moines",
+     "lat": 41.593,
+     "long": -93.661
+    },
+    {
+     "name": "dubuque",
+     "lat": 42.5122,
+     "long": -90.6819
+    },
+    {
+     "name": "fort dodge",
+     "lat": 42.51,
+     "long": -94.1852
+    },
+    {
+     "name": "iowa city",
+     "lat": 41.6612,
+     "long": -91.5572
+    },
+    {
+     "name": "mason city",
+     "lat": 43.1499,
+     "long": -93.1954
+    },
+    {
+     "name": "omaha / council bluffs",
+     "lat": 41.2473,
+     "long": -96.0371
+    },
+    {
+     "name": "sioux city",
+     "lat": 42.4973,
+     "long": -96.4005
+    },
+    {
+     "name": "southeast IA",
+     "lat": 41.004,
+     "long": -91.961
+    },
+    {
+     "name": "waterloo / cedar falls",
+     "lat": 42.4988,
+     "long": -92.3661
+    }
+   ]
+  },
+  {
+   "code": "ks",
+   "name": "Kansas",
+   "regions": [
+    {
+     "name": "kansas city, MO",
+     "lat": 39.0417,
+     "long": -94.5933
+    },
+    {
+     "name": "lawrence",
+     "lat": 38.9609,
+     "long": -95.2523
+    },
+    {
+     "name": "manhattan",
+     "lat": 39.1869,
+     "long": -96.7039
+    },
+    {
+     "name": "northwest KS",
+     "lat": 37.7048,
+     "long": -97.3586
+    },
+    {
+     "name": "salina",
+     "lat": 38.8237,
+     "long": -97.5503
+    },
+    {
+     "name": "southeast KS",
+     "lat": 37.6771,
+     "long": -95.4242
+    },
+    {
+     "name": "southwest KS",
+     "lat": 37.2746,
+     "long": -100.626
+    },
+    {
+     "name": "topeka",
+     "lat": 39.029,
+     "long": -95.7095
+    },
+    {
+     "name": "wichita",
+     "lat": 37.686,
+     "long": -97.3289
+    }
+   ]
+  },
+  {
+   "code": "ky",
+   "name": "Kentucky",
+   "regions": [
+    {
+     "name": "bowling green",
+     "lat": 36.9916,
+     "long": -86.4231
+    },
+    {
+     "name": "eastern kentucky",
+     "lat": 37.9033,
+     "long": -84.1097
+    },
+    {
+     "name": "huntington-ashland",
+     "lat": 38.4211,
+     "long": -82.432
+    },
+    {
+     "name": "lexington",
+     "lat": 38.0038,
+     "long": -84.4957
+    },
+    {
+     "name": "louisville",
+     "lat": 38.2222,
+     "long": -85.7034
+    },
+    {
+     "name": "owensboro",
+     "lat": 37.7956,
+     "long": -87.0417
+    },
+    {
+     "name": "western KY",
+     "lat": 36.8621,
+     "long": -88.1531
+    }
+   ]
+  },
+  {
+   "code": "la",
+   "name": "Louisiana",
+   "regions": [
+    {
+     "name": "baton rouge",
+     "lat": 30.4193,
+     "long": -91.1203
+    },
+    {
+     "name": "central louisiana",
+     "lat": 31.2673,
+     "long": -92.4825
+    },
+    {
+     "name": "houma",
+     "lat": 29.6208,
+     "long": -90.7603
+    },
+    {
+     "name": "lafayette",
+     "lat": 30.1798,
+     "long": -92.0382
+    },
+    {
+     "name": "lake charles",
+     "lat": 30.1865,
+     "long": -93.2218
+    },
+    {
+     "name": "monroe",
+     "lat": 32.5317,
+     "long": -92.1319
+    },
+    {
+     "name": "new orleans",
+     "lat": 29.9746,
+     "long": -90.0998
+    },
+    {
+     "name": "shreveport",
+     "lat": 32.4732,
+     "long": -93.7727
+    }
+   ]
+  },
+  {
+   "code": "me",
+   "name": "Maine",
+   "regions": [
+    {
+     "name": "maine",
+     "lat": 43.6885,
+     "long": -70.2612
+    }
+   ]
+  },
+  {
+   "code": "md",
+   "name": "Maryland",
+   "regions": [
+    {
+     "name": "annapolis",
+     "lat": 39.0809,
+     "long": -76.6919
+    },
+    {
+     "name": "baltimore",
+     "lat": 39.3265,
+     "long": -76.6274
+    },
+    {
+     "name": "cumberland valley",
+     "lat": 36.7352,
+     "long": -76.6582
+    },
+    {
+     "name": "eastern shore",
+     "lat": 38.5651,
+     "long": -75.8357
+    },
+    {
+     "name": "frederick",
+     "lat": 39.4242,
+     "long": -77.4597
+    },
+    {
+     "name": "southern maryland",
+     "lat": 38.6332,
+     "long": -76.893
+    },
+    {
+     "name": "western maryland",
+     "lat": 39.632,
+     "long": -77.7372
+    }
+   ]
+  },
+  {
+   "code": "ma",
+   "name": "Massachusetts",
+   "regions": [
+    {
+     "name": "boston",
+     "lat": 42.3647,
+     "long": -71.0922
+    },
+    {
+     "name": "cape cod / islands",
+     "lat": 41.6739,
+     "long": -70.3456
+    },
+    {
+     "name": "south coast",
+     "lat": 41.856,
+     "long": -71.1158
+    },
+    {
+     "name": "western massachusetts",
+     "lat": 42.3145,
+     "long": -72.6218
+    },
+    {
+     "name": "worcester / central MA",
+     "lat": 42.28,
+     "long": -71.7746
+    }
+   ]
+  },
+  {
+   "code": "mi",
+   "name": "Michigan",
+   "regions": [
+    {
+     "name": "ann arbor",
+     "lat": 42.2642,
+     "long": -83.723
+    },
+    {
+     "name": "battle creek",
+     "lat": 42.2826,
+     "long": -85.1874
+    },
+    {
+     "name": "central michigan",
+     "lat": 43.5911,
+     "long": -84.7603
+    },
+    {
+     "name": "detroit metro",
+     "lat": 42.4602,
+     "long": -83.215
+    },
+    {
+     "name": "flint",
+     "lat": 42.9659,
+     "long": -83.6774
+    },
+    {
+     "name": "grand rapids",
+     "lat": 42.9545,
+     "long": -85.6279
+    },
+    {
+     "name": "holland",
+     "lat": 42.8135,
+     "long": -86.1186
+    },
+    {
+     "name": "jackson",
+     "lat": 42.0488,
+     "long": -84.3875
+    },
+    {
+     "name": "kalamazoo",
+     "lat": 42.2871,
+     "long": -85.6096
+    },
+    {
+     "name": "lansing",
+     "lat": 42.7334,
+     "long": -84.5215
+    },
+    {
+     "name": "monroe",
+     "lat": 41.9268,
+     "long": -83.4464
+    },
+    {
+     "name": "muskegon",
+     "lat": 43.2113,
+     "long": -86.212
+    },
+    {
+     "name": "northern michigan",
+     "lat": 44.7242,
+     "long": -85.6071
+    },
+    {
+     "name": "port huron",
+     "lat": 42.8529,
+     "long": -82.4769
+    },
+    {
+     "name": "saginaw-midland-baycity",
+     "lat": 43.4792,
+     "long": -84.0106
+    },
+    {
+     "name": "southwest michigan",
+     "lat": 42.064,
+     "long": -86.25
+    },
+    {
+     "name": "the thumb",
+     "lat": 43.3774,
+     "long": -83.3736
+    },
+    {
+     "name": "upper peninsula",
+     "lat": 46.5598,
+     "long": -87.6129
+    }
+   ]
+  },
+  {
+   "code": "mn",
+   "name": "Minnesota",
+   "regions": [
+    {
+     "name": "bemidji",
+     "lat": 47.4786,
+     "long": -94.8402
+    },
+    {
+     "name": "brainerd",
+     "lat": 46.3679,
+     "long": -94.1996
+    },
+    {
+     "name": "duluth / superior",
+     "lat": 46.7999,
+     "long": -92.1018
+    },
+    {
+     "name": "fargo / moorhead",
+     "lat": 46.8546,
+     "long": -96.8123
+    },
+    {
+     "name": "mankato",
+     "lat": 44.1547,
+     "long": -93.996
+    },
+    {
+     "name": "minneapolis / st paul",
+     "lat": 44.948,
+     "long": -93.2838
+    },
+    {
+     "name": "rochester",
+     "lat": 44.0472,
+     "long": -92.4896
+    },
+    {
+     "name": "southwest MN",
+     "lat": 44.2993,
+     "long": -95.5914
+    },
+    {
+     "name": "st cloud",
+     "lat": 45.5457,
+     "long": -94.2008
+    }
+   ]
+  },
+  {
+   "code": "ms",
+   "name": "Mississippi",
+   "regions": [
+    {
+     "name": "gulfport / biloxi",
+     "lat": 30.3997,
+     "long": -89.0213
+    },
+    {
+     "name": "hattiesburg",
+     "lat": 31.3405,
+     "long": -89.3519
+    },
+    {
+     "name": "jackson",
+     "lat": 32.3461,
+     "long": -90.163
+    },
+    {
+     "name": "meridian",
+     "lat": 32.4281,
+     "long": -88.7052
+    },
+    {
+     "name": "north mississippi",
+     "lat": 34.3697,
+     "long": -89.554
+    },
+    {
+     "name": "southwest MS",
+     "lat": 31.5724,
+     "long": -90.3092
+    }
+   ]
+  },
+  {
+   "code": "mo",
+   "name": "Missouri",
+   "regions": [
+    {
+     "name": "columbia / jeff city",
+     "lat": 38.949,
+     "long": -92.3186
+    },
+    {
+     "name": "joplin",
+     "lat": 37.0763,
+     "long": -94.5051
+    },
+    {
+     "name": "kansas city",
+     "lat": 39.0565,
+     "long": -94.5929
+    },
+    {
+     "name": "kirksville",
+     "lat": 40.1908,
+     "long": -92.5856
+    },
+    {
+     "name": "lake of the ozarks",
+     "lat": 38.1394,
+     "long": -92.6863
+    },
+    {
+     "name": "southeast missouri",
+     "lat": 37.3132,
+     "long": -89.7228
+    },
+    {
+     "name": "springfield",
+     "lat": 37.1796,
+     "long": -93.2912
+    },
+    {
+     "name": "st joseph",
+     "lat": 39.7688,
+     "long": -94.8171
+    },
+    {
+     "name": "st louis",
+     "lat": 38.6753,
+     "long": -90.2173
+    }
+   ]
+  },
+  {
+   "code": "mt",
+   "name": "Montana",
+   "regions": [
+    {
+     "name": "billings",
+     "lat": 45.7813,
+     "long": -108.556
+    },
+    {
+     "name": "bozeman",
+     "lat": 45.6751,
+     "long": -111.075
+    },
+    {
+     "name": "butte",
+     "lat": 46.0136,
+     "long": -112.535
+    },
+    {
+     "name": "eastern montana",
+     "lat": 48.2257,
+     "long": -103.649
+    },
+    {
+     "name": "great falls",
+     "lat": 46.8636,
+     "long": -114.02
+    },
+    {
+     "name": "helena",
+     "lat": 46.5871,
+     "long": -112.0305
+    },
+    {
+     "name": "kalispell",
+     "lat": 48.3534,
+     "long": -114.3075
+    },
+    {
+     "name": "missoula",
+     "lat": 46.8693,
+     "long": -114.025
+    }
+   ]
+  },
+  {
+   "code": "ne",
+   "name": "Nebraska",
+   "regions": [
+    {
+     "name": "grand island",
+     "lat": 40.9219,
+     "long": -98.3447
+    },
+    {
+     "name": "lincoln",
+     "lat": 40.8011,
+     "long": -96.6934
+    },
+    {
+     "name": "north platte",
+     "lat": 40.5406,
+     "long": -104.736
+    },
+    {
+     "name": "omaha / council bluffs",
+     "lat": 41.2335,
+     "long": -96.1188
+    },
+    {
+     "name": "scottsbluff / panhandle",
+     "lat": 39.9129,
+     "long": -104.8835
+    }
+   ]
+  },
+  {
+   "code": "nv",
+   "name": "Nevada",
+   "regions": [
+    {
+     "name": "elko",
+     "lat": 40.6403,
+     "long": -111.974
+    },
+    {
+     "name": "las vegas",
+     "lat": 36.1283,
+     "long": -115.145
+    },
+    {
+     "name": "reno / tahoe",
+     "lat": 39.5277,
+     "long": -119.768
+    }
+   ]
+  },
+  {
+   "code": "nh",
+   "name": "New Hampshire",
+   "regions": [
+    {
+     "name": "new hampshire",
+     "lat": 42.9937,
+     "long": -71.4684
+    }
+   ]
+  },
+  {
+   "code": "nj",
+   "name": "New Jersey",
+   "regions": [
+    {
+     "name": "central NJ",
+     "lat": 40.4891,
+     "long": -74.459
+    },
+    {
+     "name": "jersey shore",
+     "lat": 40.1933,
+     "long": -74.1149
+    },
+    {
+     "name": "north jersey",
+     "lat": 40.7558,
+     "long": -74.0754
+    },
+    {
+     "name": "south jersey",
+     "lat": 39.8644,
+     "long": -75.0035
+    }
+   ]
+  },
+  {
+   "code": "nm",
+   "name": "New Mexico",
+   "regions": [
+    {
+     "name": "albuquerque",
+     "lat": 35.1347,
+     "long": -106.575
+    },
+    {
+     "name": "clovis / portales",
+     "lat": 34.4289,
+     "long": -103.2085
+    },
+    {
+     "name": "farmington",
+     "lat": 36.7516,
+     "long": -108.163
+    },
+    {
+     "name": "las cruces",
+     "lat": 32.3161,
+     "long": -106.751
+    },
+    {
+     "name": "roswell / carlsbad",
+     "lat": 32.5858,
+     "long": -104.41
+    },
+    {
+     "name": "santa fe / taos",
+     "lat": 35.6672,
+     "long": -105.949
+    }
+   ]
+  },
+  {
+   "code": "ny",
+   "name": "New York",
+   "regions": [
+    {
+     "name": "albany",
+     "lat": 42.7287,
+     "long": -73.7782
+    },
+    {
+     "name": "binghamton",
+     "lat": 42.1053,
+     "long": -75.9309
+    },
+    {
+     "name": "buffalo",
+     "lat": 42.9255,
+     "long": -78.8297
+    },
+    {
+     "name": "catskills",
+     "lat": 41.9767,
+     "long": -74.2169
+    },
+    {
+     "name": "chautauqua",
+     "lat": 42.2409,
+     "long": -79.3292
+    },
+    {
+     "name": "elmira-corning",
+     "lat": 42.1414,
+     "long": -76.9254
+    },
+    {
+     "name": "finger lakes",
+     "lat": 42.8873,
+     "long": -77.2372
+    },
+    {
+     "name": "glens falls",
+     "lat": 43.0864,
+     "long": -73.7802
+    },
+    {
+     "name": "hudson valley",
+     "lat": 41.5404,
+     "long": -73.9721
+    },
+    {
+     "name": "ithaca",
+     "lat": 42.4718,
+     "long": -76.4803
+    },
+    {
+     "name": "long island",
+     "lat": 40.847,
+     "long": -73.4142
+    },
+    {
+     "name": "new york city",
+     "lat": 40.732,
+     "long": -73.9456
+    },
+    {
+     "name": "oneonta",
+     "lat": 42.4625,
+     "long": -75.0491
+    },
+    {
+     "name": "plattsburgh-adirondacks",
+     "lat": 44.6927,
+     "long": -73.4592
+    },
+    {
+     "name": "potsdam-canton-massena",
+     "lat": 44.6634,
+     "long": -75.1005
+    },
+    {
+     "name": "rochester",
+     "lat": 43.1545,
+     "long": -77.6051
+    },
+    {
+     "name": "syracuse",
+     "lat": 43.0568,
+     "long": -76.1843
+    },
+    {
+     "name": "twin tiers NY/PA",
+     "lat": 41.8479,
+     "long": -78.0125
+    },
+    {
+     "name": "utica-rome-oneida",
+     "lat": 43.0871,
+     "long": -75.2656
+    },
+    {
+     "name": "watertown",
+     "lat": 43.9743,
+     "long": -75.9043
+    }
+   ]
+  },
+  {
+   "code": "nc",
+   "name": "North Carolina",
+   "regions": [
+    {
+     "name": "asheville",
+     "lat": 35.5493,
+     "long": -82.5354
+    },
+    {
+     "name": "boone",
+     "lat": 36.2142,
+     "long": -81.666
+    },
+    {
+     "name": "charlotte",
+     "lat": 35.2192,
+     "long": -80.8419
+    },
+    {
+     "name": "eastern NC",
+     "lat": 35.5658,
+     "long": -77.3702
+    },
+    {
+     "name": "fayetteville",
+     "lat": 35.0742,
+     "long": -78.9705
+    },
+    {
+     "name": "greensboro",
+     "lat": 36.0671,
+     "long": -79.8463
+    },
+    {
+     "name": "hickory / lenoir",
+     "lat": 35.7313,
+     "long": -81.3289
+    },
+    {
+     "name": "jacksonville",
+     "lat": 34.7826,
+     "long": -77.3961
+    },
+    {
+     "name": "outer banks",
+     "lat": 36.0088,
+     "long": -76.9342
+    },
+    {
+     "name": "raleigh / durham / CH",
+     "lat": 35.852,
+     "long": -78.749
+    },
+    {
+     "name": "wilmington",
+     "lat": 34.2342,
+     "long": -77.8862
+    },
+    {
+     "name": "winston-salem",
+     "lat": 36.0752,
+     "long": -80.2837
+    }
+   ]
+  },
+  {
+   "code": "nd",
+   "name": "North Dakota",
+   "regions": [
+    {
+     "name": "bismarck",
+     "lat": 46.835,
+     "long": -100.784
+    },
+    {
+     "name": "grand forks",
+     "lat": 47.8971,
+     "long": -97.0591
+    },
+    {
+     "name": "north dakota",
+     "lat": 48.2038,
+     "long": -101.321
+    }
+   ]
+  },
+  {
+   "code": "oh",
+   "name": "Ohio",
+   "regions": [
+    {
+     "name": "akron / canton",
+     "lat": 41.1061,
+     "long": -81.52
+    },
+    {
+     "name": "ashtabula",
+     "lat": 41.7082,
+     "long": -80.894
+    },
+    {
+     "name": "athens",
+     "lat": 39.3127,
+     "long": -82.102
+    },
+    {
+     "name": "chillicothe",
+     "lat": 39.338,
+     "long": -82.9895
+    },
+    {
+     "name": "cincinnati",
+     "lat": 39.1682,
+     "long": -84.4966
+    },
+    {
+     "name": "cleveland",
+     "lat": 41.4852,
+     "long": -81.5843
+    },
+    {
+     "name": "columbus",
+     "lat": 40.0081,
+     "long": -82.9988
+    },
+    {
+     "name": "dayton / springfield",
+     "lat": 39.7171,
+     "long": -84.1664
+    },
+    {
+     "name": "lima / findlay",
+     "lat": 40.7936,
+     "long": -84.089
+    },
+    {
+     "name": "mansfield",
+     "lat": 40.7623,
+     "long": -82.5254
+    },
+    {
+     "name": "northern panhandle",
+     "lat": 40.0733,
+     "long": -80.7297
+    },
+    {
+     "name": "parkersburg-marietta",
+     "lat": 39.2628,
+     "long": -81.6361
+    },
+    {
+     "name": "sandusky",
+     "lat": 41.3872,
+     "long": -82.7063
+    },
+    {
+     "name": "toledo",
+     "lat": 41.6505,
+     "long": -83.6258
+    },
+    {
+     "name": "tuscarawas co",
+     "lat": 40.4937,
+     "long": -81.4425
+    },
+    {
+     "name": "youngstown",
+     "lat": 41.0915,
+     "long": -80.6933
+    },
+    {
+     "name": "zanesville / cambridge",
+     "lat": 39.9803,
+     "long": -82.0041
+    }
+   ]
+  },
+  {
+   "code": "ok",
+   "name": "Oklahoma",
+   "regions": [
+    {
+     "name": "fort smith, AR",
+     "lat": 35.3653,
+     "long": -94.411
+    },
+    {
+     "name": "lawton",
+     "lat": 34.6179,
+     "long": -98.4552
+    },
+    {
+     "name": "northwest OK",
+     "lat": 36.1162,
+     "long": -97.5542
+    },
+    {
+     "name": "oklahoma city",
+     "lat": 35.4801,
+     "long": -97.5511
+    },
+    {
+     "name": "stillwater",
+     "lat": 36.1237,
+     "long": -97.0605
+    },
+    {
+     "name": "texoma",
+     "lat": 33.6521,
+     "long": -96.6184
+    },
+    {
+     "name": "tulsa",
+     "lat": 36.0976,
+     "long": -95.8866
+    }
+   ]
+  },
+  {
+   "code": "or",
+   "name": "Oregon",
+   "regions": [
+    {
+     "name": "bend",
+     "lat": 44.0686,
+     "long": -121.294
+    },
+    {
+     "name": "corvallis/albany",
+     "lat": 44.5831,
+     "long": -123.249
+    },
+    {
+     "name": "east oregon",
+     "lat": 45.8272,
+     "long": -119.285
+    },
+    {
+     "name": "eugene",
+     "lat": 44.0612,
+     "long": -123.085
+    },
+    {
+     "name": "klamath falls",
+     "lat": 42.2219,
+     "long": -121.764
+    },
+    {
+     "name": "medford-ashland",
+     "lat": 42.3201,
+     "long": -122.846
+    },
+    {
+     "name": "oregon coast",
+     "lat": 44.6381,
+     "long": -124.051
+    },
+    {
+     "name": "portland",
+     "lat": 45.5207,
+     "long": -122.675
+    },
+    {
+     "name": "roseburg",
+     "lat": 43.2283,
+     "long": -123.324
+    },
+    {
+     "name": "salem",
+     "lat": 44.9541,
+     "long": -123.007
+    }
+   ]
+  },
+  {
+   "code": "pa",
+   "name": "Pennsylvania",
+   "regions": [
+    {
+     "name": "altoona-johnstown",
+     "lat": 40.5209,
+     "long": -78.4089
+    },
+    {
+     "name": "erie",
+     "lat": 42.0763,
+     "long": -80.0864
+    },
+    {
+     "name": "harrisburg",
+     "lat": 40.2698,
+     "long": -76.8862
+    },
+    {
+     "name": "lancaster",
+     "lat": 40.0329,
+     "long": -76.3512
+    },
+    {
+     "name": "lehigh valley",
+     "lat": 40.6026,
+     "long": -75.4647
+    },
+    {
+     "name": "meadville",
+     "lat": 41.6355,
+     "long": -80.1477
+    },
+    {
+     "name": "philadelphia",
+     "lat": 39.9766,
+     "long": -75.1742
+    },
+    {
+     "name": "pittsburgh",
+     "lat": 40.4396,
+     "long": -79.9478
+    },
+    {
+     "name": "poconos",
+     "lat": 41.0701,
+     "long": -75.3669
+    },
+    {
+     "name": "reading",
+     "lat": 40.3137,
+     "long": -75.9143
+    },
+    {
+     "name": "scranton / wilkes-barre",
+     "lat": 41.3688,
+     "long": -75.7379
+    },
+    {
+     "name": "state college",
+     "lat": 40.8082,
+     "long": -77.889
+    },
+    {
+     "name": "williamsport",
+     "lat": 41.2174,
+     "long": -76.9819
+    },
+    {
+     "name": "york",
+     "lat": 39.9492,
+     "long": -76.6757
+    }
+   ]
+  },
+  {
+   "code": "ri",
+   "name": "Rhode Island",
+   "regions": [
+    {
+     "name": "rhode island",
+     "lat": 41.81,
+     "long": -71.4243
+    }
+   ]
+  },
+  {
+   "code": "sc",
+   "name": "South Carolina",
+   "regions": [
+    {
+     "name": "charleston",
+     "lat": 32.8563,
+     "long": -80.006
+    },
+    {
+     "name": "columbia",
+     "lat": 34.0239,
+     "long": -81.0671
+    },
+    {
+     "name": "florence",
+     "lat": 34.1724,
+     "long": -79.7551
+    },
+    {
+     "name": "greenville / upstate",
+     "lat": 34.849,
+     "long": -82.3399
+    },
+    {
+     "name": "hilton head",
+     "lat": 32.2683,
+     "long": -80.8212
+    },
+    {
+     "name": "myrtle beach",
+     "lat": 33.7377,
+     "long": -78.9534
+    }
+   ]
+  },
+  {
+   "code": "sd",
+   "name": "South Dakota",
+   "regions": [
+    {
+     "name": "northeast SD",
+     "lat": 43.5179,
+     "long": -96.805
+    },
+    {
+     "name": "pierre / central SD",
+     "lat": 44.1415,
+     "long": -103.172
+    },
+    {
+     "name": "rapid city / west SD",
+     "lat": 44.0761,
+     "long": -103.264
+    },
+    {
+     "name": "sioux falls / SE SD",
+     "lat": 43.5148,
+     "long": -96.7766
+    },
+    {
+     "name": "south dakota",
+     "lat": 43.7095,
+     "long": -98.0206
+    }
+   ]
+  },
+  {
+   "code": "tn",
+   "name": "Tennessee",
+   "regions": [
+    {
+     "name": "chattanooga",
+     "lat": 35.0754,
+     "long": -85.1979
+    },
+    {
+     "name": "clarksville",
+     "lat": 36.5743,
+     "long": -87.349
+    },
+    {
+     "name": "cookeville",
+     "lat": 36.1779,
+     "long": -85.5423
+    },
+    {
+     "name": "jackson",
+     "lat": 35.6892,
+     "long": -88.8425
+    },
+    {
+     "name": "knoxville",
+     "lat": 35.9331,
+     "long": -84.0045
+    },
+    {
+     "name": "memphis",
+     "lat": 35.1435,
+     "long": -89.904
+    },
+    {
+     "name": "nashville",
+     "lat": 36.0947,
+     "long": -86.7129
+    },
+    {
+     "name": "tri-cities",
+     "lat": 36.4962,
+     "long": -82.4523
+    }
+   ]
+  },
+  {
+   "code": "tx",
+   "name": "Texas",
+   "regions": [
+    {
+     "name": "abilene",
+     "lat": 32.4197,
+     "long": -99.7724
+    },
+    {
+     "name": "amarillo",
+     "lat": 35.1916,
+     "long": -101.882
+    },
+    {
+     "name": "austin",
+     "lat": 30.2937,
+     "long": -97.7526
+    },
+    {
+     "name": "beaumont / port arthur",
+     "lat": 30.0878,
+     "long": -94.1197
+    },
+    {
+     "name": "brownsville",
+     "lat": 26.0631,
+     "long": -97.5174
+    },
+    {
+     "name": "college station",
+     "lat": 30.6364,
+     "long": -96.3123
+    },
+    {
+     "name": "corpus christi",
+     "lat": 27.7103,
+     "long": -97.3679
+    },
+    {
+     "name": "dallas / fort worth",
+     "lat": 32.8697,
+     "long": -96.8353
+    },
+    {
+     "name": "deep east texas",
+     "lat": 31.6287,
+     "long": -94.6548
+    },
+    {
+     "name": "del rio / eagle pass",
+     "lat": 29.0313,
+     "long": -100.6875
+    },
+    {
+     "name": "el paso",
+     "lat": 31.8197,
+     "long": -106.421
+    },
+    {
+     "name": "galveston",
+     "lat": 29.3094,
+     "long": -94.8356
+    },
+    {
+     "name": "houston",
+     "lat": 29.745,
+     "long": -95.459
+    },
+    {
+     "name": "killeen / temple / ft hood",
+     "lat": 31.0917,
+     "long": -97.6943
+    },
+    {
+     "name": "laredo",
+     "lat": 27.5625,
+     "long": -99.4863
+    },
+    {
+     "name": "lubbock",
+     "lat": 33.5497,
+     "long": -101.919
+    },
+    {
+     "name": "mcallen / edinburg",
+     "lat": 26.2341,
+     "long": -98.2069
+    },
+    {
+     "name": "odessa / midland",
+     "lat": 32.0065,
+     "long": -102.148
+    },
+    {
+     "name": "san angelo",
+     "lat": 31.475,
+     "long": -100.472
+    },
+    {
+     "name": "san antonio",
+     "lat": 29.5252,
+     "long": -98.5521
+    },
+    {
+     "name": "san marcos",
+     "lat": 29.8754,
+     "long": -97.9404
+    },
+    {
+     "name": "southwest TX",
+     "lat": 30.3162,
+     "long": -98.5117
+    },
+    {
+     "name": "texarkana",
+     "lat": 33.4669,
+     "long": -94.0774
+    },
+    {
+     "name": "tyler / east TX",
+     "lat": 32.299,
+     "long": -95.2785
+    },
+    {
+     "name": "victoria",
+     "lat": 28.8104,
+     "long": -96.9993
+    },
+    {
+     "name": "waco",
+     "lat": 31.535,
+     "long": -97.1396
+    },
+    {
+     "name": "wichita falls",
+     "lat": 33.8712,
+     "long": -98.5145
+    }
+   ]
+  },
+  {
+   "code": "ut",
+   "name": "Utah",
+   "regions": [
+    {
+     "name": "logan",
+     "lat": 41.747,
+     "long": -111.83
+    },
+    {
+     "name": "ogden-clearfield",
+     "lat": 41.1257,
+     "long": -111.97
+    },
+    {
+     "name": "provo / orem",
+     "lat": 40.367,
+     "long": -111.736
+    },
+    {
+     "name": "salt lake city",
+     "lat": 40.6568,
+     "long": -111.897
+    },
+    {
+     "name": "st george",
+     "lat": 37.1364,
+     "long": -113.558
+    }
+   ]
+  },
+  {
+   "code": "vt",
+   "name": "Vermont",
+   "regions": [
+    {
+     "name": "vermont",
+     "lat": 44.4665,
+     "long": -73.1348
+    }
+   ]
+  },
+  {
+   "code": "va",
+   "name": "Virginia",
+   "regions": [
+    {
+     "name": "charlottesville",
+     "lat": 38.0618,
+     "long": -78.4966
+    },
+    {
+     "name": "danville",
+     "lat": 36.6015,
+     "long": -79.439
+    },
+    {
+     "name": "fredericksburg",
+     "lat": 38.3055,
+     "long": -77.5111
+    },
+    {
+     "name": "harrisonburg",
+     "lat": 38.4199,
+     "long": -78.874
+    },
+    {
+     "name": "lynchburg",
+     "lat": 37.363,
+     "long": -79.2124
+    },
+    {
+     "name": "new river valley",
+     "lat": 37.2233,
+     "long": -80.4211
+    },
+    {
+     "name": "norfolk / hampton roads",
+     "lat": 36.8782,
+     "long": -76.2956
+    },
+    {
+     "name": "richmond",
+     "lat": 37.5232,
+     "long": -77.469
+    },
+    {
+     "name": "roanoke",
+     "lat": 37.2704,
+     "long": -79.9535
+    },
+    {
+     "name": "southwest VA",
+     "lat": 36.8273,
+     "long": -81.8123
+    },
+    {
+     "name": "winchester",
+     "lat": 39.155,
+     "long": -78.1823
+    }
+   ]
+  },
+  {
+   "code": "wa",
+   "name": "Washington",
+   "regions": [
+    {
+     "name": "bellingham",
+     "lat": 48.7603,
+     "long": -122.476
+    },
+    {
+     "name": "kennewick-pasco-richland",
+     "lat": 46.2508,
+     "long": -119.223
+    },
+    {
+     "name": "lewiston / clarkston",
+     "lat": 47.6634,
+     "long": -117.219
+    },
+    {
+     "name": "moses lake",
+     "lat": 47.1374,
+     "long": -119.289
+    },
+    {
+     "name": "olympic peninsula",
+     "lat": 48.0094,
+     "long": -123.295
+    },
+    {
+     "name": "pullman / moscow",
+     "lat": 46.7415,
+     "long": -117.156
+    },
+    {
+     "name": "seattle-tacoma",
+     "lat": 47.6182,
+     "long": -122.3035
+    },
+    {
+     "name": "skagit / island / SJI",
+     "lat": 48.291,
+     "long": -122.273
+    },
+    {
+     "name": "spokane / coeur d'alene",
+     "lat": 47.6627,
+     "long": -117.3605
+    },
+    {
+     "name": "wenatchee",
+     "lat": 47.434,
+     "long": -120.316
+    },
+    {
+     "name": "yakima",
+     "lat": 46.6565,
+     "long": -120.54
+    }
+   ]
+  },
+  {
+   "code": "wv",
+   "name": "West Virginia",
+   "regions": [
+    {
+     "name": "charleston",
+     "lat": 38.3498,
+     "long": -81.669
+    },
+    {
+     "name": "eastern panhandle",
+     "lat": 39.4734,
+     "long": -77.8606
+    },
+    {
+     "name": "huntington-ashland",
+     "lat": 38.4272,
+     "long": -82.4137
+    },
+    {
+     "name": "morgantown",
+     "lat": 39.6319,
+     "long": -79.9455
+    },
+    {
+     "name": "northern panhandle",
+     "lat": 40.0874,
+     "long": -80.6899
+    },
+    {
+     "name": "parkersburg-marietta",
+     "lat": 39.3917,
+     "long": -81.2033
+    },
+    {
+     "name": "southern WV",
+     "lat": 37.7932,
+     "long": -81.0937
+    },
+    {
+     "name": "west virginia (old)",
+     "lat": 39.2782,
+     "long": -80.4283
+    }
+   ]
+  },
+  {
+   "code": "wi",
+   "name": "Wisconsin",
+   "regions": [
+    {
+     "name": "appleton-oshkosh-FDL",
+     "lat": 44.2092,
+     "long": -88.4565
+    },
+    {
+     "name": "duluth / superior",
+     "lat": 46.8147,
+     "long": -92.1998
+    },
+    {
+     "name": "eau claire",
+     "lat": 44.8491,
+     "long": -91.493
+    },
+    {
+     "name": "green bay",
+     "lat": 44.5018,
+     "long": -88.0225
+    },
+    {
+     "name": "janesville",
+     "lat": 42.6836,
+     "long": -89.0069
+    },
+    {
+     "name": "kenosha-racine",
+     "lat": 42.5961,
+     "long": -87.8552
+    },
+    {
+     "name": "la crosse",
+     "lat": 43.8123,
+     "long": -91.243
+    },
+    {
+     "name": "madison",
+     "lat": 43.0769,
+     "long": -89.388
+    },
+    {
+     "name": "milwaukee",
+     "lat": 43.0504,
+     "long": -87.9665
+    },
+    {
+     "name": "northern WI",
+     "lat": 45.7068,
+     "long": -90.3103
+    },
+    {
+     "name": "sheboygan",
+     "lat": 43.752,
+     "long": -87.7247
+    },
+    {
+     "name": "wausau",
+     "lat": 44.5362,
+     "long": -89.6192
+    }
+   ]
+  },
+  {
+   "code": "wy",
+   "name": "Wyoming",
+   "regions": [
+    {
+     "name": "wyoming",
+     "lat": 42.8068,
+     "long": -106.296
+    }
+   ]
+  }
+ ],
+ "type": [
+  "apartment",
+  "house",
+  "townhouse",
+  "condo",
+  "duplex",
+  "manufactured",
+  "cottage/cabin",
+  "flat",
+  "loft",
+  "in-law",
+  "land",
+  "assisted living"
+ ],
+ "laundry_options": [
+  "w/d in unit",
+  "w/d hookups",
+  "Unknown",
+  "laundry on site",
+  "laundry in bldg",
+  "no laundry on site"
+ ],
+ "parking_options": [
+  "off-street parking",
+  "Unknown",
+  "attached garage",
+  "carport",
+  "detached garage",
+  "street parking",
+  "no parking",
+  "valet parking"
+ ],
+ "numeric": {
+  "sqfeet": {
+   "min": 210.0,
+   "max": 3182.0,
+   "default": 971.0
+  },
+  "beds": {
+   "min": 0,
+   "max": 8,
+   "default": 2
+  },
+  "baths": {
+   "min": 0.0,
+   "max": 8.0,
+   "default": 1.0
+  }
+ }
+}
