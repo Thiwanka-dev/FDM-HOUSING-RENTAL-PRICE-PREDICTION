@@ -240,7 +240,7 @@ button:disabled {
 }
 
 .map-pin svg {
-  fill: #0f6b5c;
+  fill: #1d4ed8;
   stroke: #ffffff;
   stroke-width: 1.5;
   filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.4));
@@ -252,9 +252,9 @@ button:disabled {
 }
 
 .map-state {
-  fill: #0e9480;
+  fill: #2563eb;
   fill-opacity: 0.1;
-  stroke: #0f6b5c;
+  stroke: #1d4ed8;
   stroke-width: 2;
 }
 
