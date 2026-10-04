@@ -45,6 +45,10 @@ export interface RentalFeatures {
   wheelchair_access: boolean
   electric_vehicle_charge: boolean
   comes_furnished: boolean
+  // Exact location chosen on the map. Without it, the backend uses the
+  // typical coordinates of the region.
+  lat?: number
+  long?: number
 }
 
 export interface Prediction {

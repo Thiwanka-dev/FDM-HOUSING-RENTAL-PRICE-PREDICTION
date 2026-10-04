@@ -220,6 +220,44 @@ button:disabled {
   cursor: not-allowed;
 }
 
+/* Map */
+
+.map {
+  height: 300px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  /* Keeps the map's own layers below the rest of the page. */
+  isolation: isolate;
+  cursor: crosshair;
+}
+
+.map-hint {
+  margin-bottom: 16px;
+}
+
+.map + .note {
+  margin-bottom: 16px;
+}
+
+.map-pin svg {
+  fill: #0f6b5c;
+  stroke: #ffffff;
+  stroke-width: 1.5;
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.4));
+}
+
+.map-pin circle {
+  fill: #ffffff;
+  stroke: none;
+}
+
+.map-state {
+  fill: #0e9480;
+  fill-opacity: 0.1;
+  stroke: #0f6b5c;
+  stroke-width: 2;
+}
+
 /* Messages */
 
 .note {
