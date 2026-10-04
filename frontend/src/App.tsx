@@ -1,40 +1,64 @@
 import { useEffect, useState } from 'react'
-import { getMetadata, predictPrice } from './api'
-import type { Metadata, Prediction, RentalFeatures } from './api'
+import { comparePrices, getMetadata, getModels, predictPrice } from './api'
+import type { Metadata, ModelInfo, Prediction, RentalFeatures } from './api'
+import ComparisonCard from './components/ComparisonCard'
 import PredictionForm from './components/PredictionForm'
 import ResultCard from './components/ResultCard'
 import './App.css'
 
+interface Reference {
+  metadata: Metadata
+  models: ModelInfo[]
+}
+
+type Result =
+  | { kind: 'estimate'; prediction: Prediction }
+  | { kind: 'compare'; predictions: Prediction[] }
+
 export default function App() {
-  const [metadata, setMetadata] = useState<Metadata | null>(null)
+  const [reference, setReference] = useState<Reference | null>(null)
   const [loadError, setLoadError] = useState<string | null>(null)
-  const [prediction, setPrediction] = useState<Prediction | null>(null)
-  const [predictError, setPredictError] = useState<string | null>(null)
-  const [loading, setLoading] = useState(false)
+  const [result, setResult] = useState<Result | null>(null)
+  const [resultError, setResultError] = useState<string | null>(null)
+  const [busy, setBusy] = useState<Result['kind'] | null>(null)
 
   useEffect(() => {
-    getMetadata()
-      .then(setMetadata)
+    Promise.all([getMetadata(), getModels()])
+      .then(([metadata, models]) => setReference({ metadata, models }))
       .catch((error: Error) => setLoadError(error.message))
   }, [])
 
-  async function estimate(features: RentalFeatures) {
-    setLoading(true)
-    setPredictError(null)
+  async function run(kind: Result['kind'], request: () => Promise<Result>) {
+    setBusy(kind)
+    setResultError(null)
     try {
-      setPrediction(await predictPrice(features))
+      setResult(await request())
     } catch (error) {
-      setPrediction(null)
-      setPredictError((error as Error).message)
+      setResult(null)
+      setResultError((error as Error).message)
     } finally {
-      setLoading(false)
+      setBusy(null)
     }
   }
 
-  // An estimate no longer describes the form once an input changes.
+  function estimate(features: RentalFeatures, model: string) {
+    run('estimate', async () => ({
+      kind: 'estimate',
+      prediction: await predictPrice(features, model),
+    }))
+  }
+
+  function compare(features: RentalFeatures) {
+    run('compare', async () => ({
+      kind: 'compare',
+      predictions: await comparePrices(features),
+    }))
+  }
+
+  // A result no longer describes the form once an input changes.
   function clearResult() {
-    setPrediction(null)
-    setPredictError(null)
+    setResult(null)
+    setResultError(null)
   }
 
   return (
@@ -45,17 +69,23 @@ export default function App() {
       </header>
 
       {loadError && <p className="card note error">{loadError}</p>}
-      {!loadError && !metadata && <p className="card placeholder">Loading…</p>}
+      {!loadError && !reference && <p className="card placeholder">Loading…</p>}
 
-      {metadata && (
+      {reference && (
         <main>
           <PredictionForm
-            metadata={metadata}
-            loading={loading}
-            onSubmit={estimate}
+            metadata={reference.metadata}
+            models={reference.models}
+            busy={busy}
+            onEstimate={estimate}
+            onCompare={compare}
             onChange={clearResult}
           />
-          <ResultCard prediction={prediction} error={predictError} />
+          {result?.kind === 'compare' ? (
+            <ComparisonCard models={reference.models} predictions={result.predictions} />
+          ) : (
+            <ResultCard prediction={result?.prediction ?? null} error={resultError} />
+          )}
         </main>
       )}
     </div>

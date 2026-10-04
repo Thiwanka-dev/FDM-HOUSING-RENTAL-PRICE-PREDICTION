@@ -54,6 +54,16 @@ export interface Prediction {
   test_mae: number | null
 }
 
+export interface ModelInfo {
+  id: string
+  name: string
+  default: boolean
+  available: boolean
+  test_mae: number | null
+  test_rmse: number | null
+  test_r2: number | null
+}
+
 const OFFLINE_MESSAGE =
   'The backend is not running. Start it with: uvicorn backend.app.main:app --reload'
 
@@ -89,10 +99,23 @@ export function getMetadata(): Promise<Metadata> {
   return request('/api/metadata')
 }
 
-export function predictPrice(features: RentalFeatures): Promise<Prediction> {
-  return request('/api/predict', {
+export function getModels(): Promise<ModelInfo[]> {
+  return request('/api/models')
+}
+
+function post<T>(path: string, body: unknown): Promise<T> {
+  return request(path, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ features }),
+    body: JSON.stringify(body),
   })
+}
+
+export function predictPrice(features: RentalFeatures, model: string): Promise<Prediction> {
+  return post('/api/predict', { features, model })
+}
+
+// One prediction from every model whose saved file is available.
+export function comparePrices(features: RentalFeatures): Promise<Prediction[]> {
+  return post('/api/predict/compare', { features })
 }

@@ -17,7 +17,13 @@ from models.neural_network.neural_network import BINARY_FEATURES, COORDINATE_FEA
 
 from .metadata import METADATA, OPTION_FEATURES, REGION_COORDINATES
 from .registry import DEFAULT_MODEL_ID, REGISTRY, ModelEntry
-from .schemas import ModelInfo, PredictRequest, PredictResponse, RentalFeatures
+from .schemas import (
+    CompareRequest,
+    ModelInfo,
+    PredictRequest,
+    PredictResponse,
+    RentalFeatures,
+)
 
 
 @asynccontextmanager
@@ -104,13 +110,24 @@ def list_models() -> list[ModelInfo]:
     ]
 
 
-@app.post("/api/predict")
-def predict(request: PredictRequest) -> PredictResponse:
-    entry = get_entry(request.model)
-    price = entry.model.predict_one(prepare_features(request.features))
+def _prediction(entry: ModelEntry, record: dict[str, Any]) -> PredictResponse:
     return PredictResponse(
         model=entry.id,
         name=entry.name,
-        price=round(price, 2),
+        price=round(entry.model.predict_one(record), 2),
         test_mae=(entry.metrics or {}).get("MAE"),
     )
+
+
+@app.post("/api/predict")
+def predict(request: PredictRequest) -> PredictResponse:
+    entry = get_entry(request.model)
+    return _prediction(entry, prepare_features(request.features))
+
+
+@app.post("/api/predict/compare")
+def compare(request: CompareRequest) -> list[PredictResponse]:
+    """Predict the same listing with every model whose file is available."""
+
+    record = prepare_features(request.features)
+    return [_prediction(entry, record) for entry in REGISTRY.values() if entry.available]

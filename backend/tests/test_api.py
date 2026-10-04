@@ -103,6 +103,31 @@ def test_api_matches_the_model_called_directly(client, model_id):
         assert response.json()["price"] == pytest.approx(price, abs=0.02)
 
 
+def test_compare_returns_every_available_model(client, listing):
+    response = client.post("/api/predict/compare", json={"features": listing})
+
+    assert response.status_code == 200
+    predictions = response.json()
+    available = [entry.id for entry in REGISTRY.values() if entry.available]
+    assert [prediction["model"] for prediction in predictions] == available
+    for prediction in predictions:
+        single = predict(client, listing, model=prediction["model"]).json()
+        assert prediction == single
+
+
+def test_compare_leaves_out_a_model_without_a_saved_file(client, listing, monkeypatch):
+    monkeypatch.setattr(REGISTRY["random_forest"], "artifact_path", Path("missing.joblib"))
+
+    response = client.post("/api/predict/compare", json={"features": listing})
+    assert response.status_code == 200
+    assert "random_forest" not in [prediction["model"] for prediction in response.json()]
+
+
+def test_compare_rejects_invalid_values(client, listing):
+    response = client.post("/api/predict/compare", json={"features": {**listing, "type": "castle"}})
+    assert response.status_code == 422
+
+
 # ------------------------------------------------------------------ bad input
 
 

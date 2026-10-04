@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
-import type { Metadata, RentalFeatures } from '../api'
-import { AMENITIES, optionLabel, regionLabel } from '../labels'
+import type { Metadata, ModelInfo, RentalFeatures } from '../api'
+import { AMENITIES, formatDollars, optionLabel, regionLabel } from '../labels'
 
 interface Props {
   metadata: Metadata
-  loading: boolean
-  onSubmit: (features: RentalFeatures) => void
+  models: ModelInfo[]
+  // The request that is in progress, if any.
+  busy: 'estimate' | 'compare' | null
+  onEstimate: (features: RentalFeatures, model: string) => void
+  onCompare: (features: RentalFeatures) => void
   onChange: () => void
 }
 
@@ -37,8 +40,17 @@ function steps(min: number, max: number, step: number): number[] {
   return Array.from({ length: count }, (_, index) => min + index * step)
 }
 
-export default function PredictionForm({ metadata, loading, onSubmit, onChange }: Props) {
+export default function PredictionForm({
+  metadata,
+  models,
+  busy,
+  onEstimate,
+  onCompare,
+  onChange,
+}: Props) {
   const [values, setValues] = useState(() => initialValues(metadata))
+  const [modelId, setModelId] = useState(() => models.find((model) => model.default)!.id)
+  const model = models.find((candidate) => candidate.id === modelId)!
 
   const { sqfeet: sqfeetRange, beds: bedsRange, baths: bathsRange } = metadata.numeric
   const regions = metadata.states.find((state) => state.code === values.state)?.regions ?? []
@@ -59,9 +71,14 @@ export default function PredictionForm({ metadata, loading, onSubmit, onChange }
     update({ state: code, region: stateRegions.length === 1 ? stateRegions[0].name : '' })
   }
 
+  function selectModel(id: string) {
+    setModelId(id)
+    onChange()
+  }
+
   function submit(event: FormEvent) {
     event.preventDefault()
-    if (complete) onSubmit({ ...values, sqfeet })
+    if (complete) onEstimate({ ...values, sqfeet }, modelId)
   }
 
   return (
@@ -221,9 +238,41 @@ export default function PredictionForm({ metadata, loading, onSubmit, onChange }
         </div>
       </fieldset>
 
-      <button type="submit" disabled={!complete || loading}>
-        {loading ? 'Estimating…' : 'Estimate rent'}
-      </button>
+      <fieldset>
+        <legend>Model</legend>
+        <div className="field">
+          <label htmlFor="model">Prediction model</label>
+          <select id="model" value={modelId} onChange={(event) => selectModel(event.target.value)}>
+            {models.map((candidate) => (
+              <option key={candidate.id} value={candidate.id} disabled={!candidate.available}>
+                {candidate.name}
+                {candidate.default && ' (recommended)'}
+                {!candidate.available && ' (not installed)'}
+              </option>
+            ))}
+          </select>
+        </div>
+        {model.test_mae !== null && model.test_r2 !== null && (
+          <p className="hint">
+            Average test error {formatDollars(model.test_mae)}, R² {model.test_r2.toFixed(2)}.
+            {model.default && ' This model had the lowest error of the four.'}
+          </p>
+        )}
+      </fieldset>
+
+      <div className="actions">
+        <button type="submit" disabled={!complete || busy !== null}>
+          {busy === 'estimate' ? 'Estimating…' : 'Estimate rent'}
+        </button>
+        <button
+          type="button"
+          className="secondary"
+          disabled={!complete || busy !== null}
+          onClick={() => onCompare({ ...values, sqfeet })}
+        >
+          {busy === 'compare' ? 'Comparing…' : 'Compare all models'}
+        </button>
+      </div>
     </form>
   )
 }

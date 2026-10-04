@@ -35,6 +35,10 @@ class PredictRequest(BaseModel):
     model: str = DEFAULT_MODEL_ID
 
 
+class CompareRequest(BaseModel):
+    features: RentalFeatures
+
+
 class PredictResponse(BaseModel):
     model: str
     name: str
