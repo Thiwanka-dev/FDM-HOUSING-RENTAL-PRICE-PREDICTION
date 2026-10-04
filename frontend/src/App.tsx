@@ -3,6 +3,7 @@ import { comparePrices, getMetadata, getModels, predictPrice } from './api'
 import type { Metadata, ModelInfo, Prediction, RentalFeatures } from './api'
 import AboutModels from './components/AboutModels'
 import ComparisonCard from './components/ComparisonCard'
+import Icon from './components/Icon'
 import PredictionForm from './components/PredictionForm'
 import ResultCard from './components/ResultCard'
 import './App.css'
@@ -20,8 +21,7 @@ const PAGES = [
 type Page = (typeof PAGES)[number]['id']
 
 type Result =
-  | { kind: 'estimate'; prediction: Prediction }
-  | { kind: 'compare'; predictions: Prediction[] }
+  { kind: 'estimate'; prediction: Prediction } | { kind: 'compare'; predictions: Prediction[] }
 
 export default function App() {
   const [reference, setReference] = useState<Reference | null>(null)
@@ -71,52 +71,62 @@ export default function App() {
   }
 
   return (
-    <div className="page">
-      <header>
-        <h1>U.S. Rental Price Estimator</h1>
-        <p>Estimate the monthly rent of a residential property in the United States.</p>
+    <>
+      <header className="hero">
+        <div className="hero-inner">
+          <span className="hero-icon">
+            <Icon name="house" size={30} />
+          </span>
+          <div>
+            <h1>U.S. Rental Price Estimator</h1>
+            <p>
+              Estimate the monthly rent of a home anywhere in the United States, using models built
+              from about 180,000 rental listings.
+            </p>
+          </div>
+        </div>
       </header>
 
-      <nav aria-label="Pages">
-        {PAGES.map(({ id, label }) => (
-          <button
-            key={id}
-            type="button"
-            className="tab"
-            aria-current={page === id ? 'page' : undefined}
-            onClick={() => setPage(id)}
-          >
-            {label}
-          </button>
-        ))}
-      </nav>
+      <div className="page">
+        <nav aria-label="Pages">
+          {PAGES.map(({ id, label }) => (
+            <button
+              key={id}
+              type="button"
+              className="tab"
+              aria-current={page === id ? 'page' : undefined}
+              onClick={() => setPage(id)}
+            >
+              {label}
+            </button>
+          ))}
+        </nav>
 
-      {loadError && <p className="card note error">{loadError}</p>}
-      {!loadError && !reference && <p className="card placeholder">Loading…</p>}
+        {loadError && <p className="card note error">{loadError}</p>}
+        {!loadError && !reference && <p className="card placeholder">Loading…</p>}
 
-      {reference && (
-        <>
-          {/* Hidden, not removed, so the form keeps its values between pages. */}
-          <main hidden={page !== 'estimate'}>
-            <PredictionForm
-              metadata={reference.metadata}
-              models={reference.models}
-              busy={busy}
-              onEstimate={estimate}
-              onCompare={compare}
-              onChange={clearResult}
-            />
-            {result?.kind === 'compare' ? (
-              <ComparisonCard models={reference.models} predictions={result.predictions} />
-            ) : (
-              <ResultCard prediction={result?.prediction ?? null} error={resultError} />
-            )}
-          </main>
-          {page === 'about' && <AboutModels models={reference.models} />}
-        </>
-      )}
-
-      <footer>IT3051 Fundamentals of Data Mining project.</footer>
-    </div>
+        {reference && (
+          <>
+            {/* Hidden, not removed, so the form keeps its values between pages. */}
+            <main hidden={page !== 'estimate'}>
+              <PredictionForm
+                metadata={reference.metadata}
+                models={reference.models}
+                busy={busy}
+                onEstimate={estimate}
+                onCompare={compare}
+                onChange={clearResult}
+              />
+              {result?.kind === 'compare' ? (
+                <ComparisonCard models={reference.models} predictions={result.predictions} />
+              ) : (
+                <ResultCard prediction={result?.prediction ?? null} error={resultError} />
+              )}
+            </main>
+            {page === 'about' && <AboutModels models={reference.models} />}
+          </>
+        )}
+      </div>
+    </>
   )
 }

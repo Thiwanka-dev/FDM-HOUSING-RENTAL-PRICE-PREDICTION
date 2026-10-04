@@ -16,7 +16,7 @@ export default function ComparisonCard({ models, predictions }: Props) {
     <section className="card result" aria-live="polite">
       <h2>Estimated monthly rent by model</h2>
 
-      <ul className="comparison">
+      <ul className="comparison reveal">
         {models.map((model) => {
           const prediction = predictions.find((candidate) => candidate.model === model.id)
           return (
@@ -50,7 +50,7 @@ export default function ComparisonCard({ models, predictions }: Props) {
         })}
       </ul>
 
-      <p className="accuracy">
+      <p className="accuracy reveal">
         {predictions.length > 1 && (
           <>
             The estimates range from <strong>{formatDollars(lowest)}</strong> to{' '}

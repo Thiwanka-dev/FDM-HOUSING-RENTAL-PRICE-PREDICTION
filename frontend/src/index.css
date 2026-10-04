@@ -7,6 +7,9 @@
   --accent: #0f6b5c;
   --accent-text: #ffffff;
   --bar: #0e9480;
+  --hero-start: #0f6b5c;
+  --hero-end: #0b4a5e;
+  --chip-selected: #e3f3ef;
   --warning-background: #fff5db;
   --warning-text: #6b4a00;
   --error-background: #fdeaea;
@@ -29,6 +32,9 @@
     --accent: #4cc2ac;
     --accent-text: #06221d;
     --bar: #1fa08a;
+    --hero-start: #124a42;
+    --hero-end: #0f3344;
+    --chip-selected: #17403a;
     --warning-background: #3a2f10;
     --warning-text: #f3d68a;
     --error-background: #3d1a1a;
@@ -44,4 +50,14 @@
 
 body {
   margin: 0;
+}
+
+/* Present for screen readers and the keyboard, but not drawn. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }

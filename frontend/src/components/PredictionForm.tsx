@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import type { Metadata, ModelInfo, RentalFeatures } from '../api'
+import Icon from './Icon'
 import { AMENITIES, formatDollars, optionLabel, regionLabel } from '../labels'
 
 interface Props {
@@ -84,7 +85,12 @@ export default function PredictionForm({
   return (
     <form className="card form" onSubmit={submit}>
       <fieldset>
-        <legend>Location</legend>
+        <legend>
+          <span className="legend-title">
+            <Icon name="mapPin" />
+            Location
+          </span>
+        </legend>
         <div className="grid">
           <div className="field">
             <label htmlFor="state">State</label>
@@ -125,7 +131,12 @@ export default function PredictionForm({
       </fieldset>
 
       <fieldset>
-        <legend>Property</legend>
+        <legend>
+          <span className="legend-title">
+            <Icon name="house" />
+            Property
+          </span>
+        </legend>
         <div className="grid">
           <div className="field">
             <label htmlFor="type">Property type</label>
@@ -193,7 +204,12 @@ export default function PredictionForm({
       </fieldset>
 
       <fieldset>
-        <legend>Amenities</legend>
+        <legend>
+          <span className="legend-title">
+            <Icon name="sparkles" />
+            Amenities
+          </span>
+        </legend>
         <div className="grid">
           <div className="field">
             <label htmlFor="laundry">Laundry</label>
@@ -224,14 +240,17 @@ export default function PredictionForm({
             </select>
           </div>
         </div>
-        <div className="checks">
-          {AMENITIES.map(({ field, label }) => (
-            <label key={field} className="check">
+        <div className="chips">
+          {AMENITIES.map(({ field, label, icon }) => (
+            // The checkbox is hidden; the whole chip shows whether it is selected.
+            <label key={field} className="chip">
               <input
                 type="checkbox"
+                className="visually-hidden"
                 checked={values[field]}
                 onChange={(event) => update({ [field]: event.target.checked })}
               />
+              <Icon name={icon} size={16} />
               {label}
             </label>
           ))}
@@ -239,7 +258,12 @@ export default function PredictionForm({
       </fieldset>
 
       <fieldset>
-        <legend>Model</legend>
+        <legend>
+          <span className="legend-title">
+            <Icon name="brain" />
+            Model
+          </span>
+        </legend>
         <div className="field">
           <label htmlFor="model">Prediction model</label>
           <select id="model" value={modelId} onChange={(event) => selectModel(event.target.value)}>

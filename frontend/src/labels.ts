@@ -1,6 +1,7 @@
 // Display text for the values stored in the dataset.
 
 import type { RentalFeatures } from './api'
+import type { IconName } from './components/Icon'
 
 const OPTION_LABELS: Record<string, string> = {
   Unknown: 'Not specified',
@@ -26,13 +27,13 @@ type Amenity = keyof {
   [K in keyof RentalFeatures as RentalFeatures[K] extends boolean ? K : never]: true
 }
 
-export const AMENITIES: { field: Amenity; label: string }[] = [
-  { field: 'cats_allowed', label: 'Cats allowed' },
-  { field: 'dogs_allowed', label: 'Dogs allowed' },
-  { field: 'smoking_allowed', label: 'Smoking allowed' },
-  { field: 'comes_furnished', label: 'Furnished' },
-  { field: 'wheelchair_access', label: 'Wheelchair access' },
-  { field: 'electric_vehicle_charge', label: 'Electric vehicle charging' },
+export const AMENITIES: { field: Amenity; label: string; icon: IconName }[] = [
+  { field: 'cats_allowed', label: 'Cats allowed', icon: 'cat' },
+  { field: 'dogs_allowed', label: 'Dogs allowed', icon: 'dog' },
+  { field: 'smoking_allowed', label: 'Smoking allowed', icon: 'cigarette' },
+  { field: 'comes_furnished', label: 'Furnished', icon: 'sofa' },
+  { field: 'wheelchair_access', label: 'Wheelchair access', icon: 'accessibility' },
+  { field: 'electric_vehicle_charge', label: 'Electric vehicle charging', icon: 'plug' },
 ]
 
 const dollars = new Intl.NumberFormat('en-US', {
