@@ -39,6 +39,27 @@ Run every command from the project folder.
    so this command trains it (about one minute). `--evaluate-test` then scores
    all four saved models on `raw_test.csv`.
 
+## Website
+
+The website estimates the rent of a property with the Neural Network, and can
+also use or compare the other three models. Start the backend from the project
+folder:
+
+```
+uvicorn backend.app.main:app --reload
+```
+
+Then start the frontend in a second terminal and open http://localhost:5173:
+
+```
+cd frontend
+npm install
+npm run dev
+```
+
+The backend is in `backend/` (FastAPI) and the frontend in `frontend/`
+(React and TypeScript). Run the backend tests with `python -m pytest backend`.
+
 ## Models
 
 | Model | Notebook | Saved model | Test MAE | Test R² |

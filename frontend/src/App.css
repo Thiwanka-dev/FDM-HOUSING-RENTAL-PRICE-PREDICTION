@@ -10,8 +10,38 @@ header h1 {
 }
 
 header p {
-  margin: 4px 0 24px;
+  margin: 4px 0 20px;
   color: var(--muted);
+}
+
+nav {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+button.tab {
+  padding: 10px 14px;
+  color: var(--muted);
+  background: transparent;
+  border-bottom: 2px solid transparent;
+  border-radius: 8px 8px 0 0;
+}
+
+button.tab[aria-current='page'] {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+footer {
+  margin-top: 32px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+main[hidden] {
+  display: none;
 }
 
 main {
@@ -250,6 +280,106 @@ button:disabled {
   color: var(--muted);
 }
 
+/* About the models */
+
+.about {
+  display: grid;
+  /* minmax(0, ...) lets the wide table scroll instead of stretching the page. */
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  max-width: 760px;
+}
+
+.about h2 {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+}
+
+.lead {
+  margin: 0 0 16px;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px 8px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+thead th {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+tbody th {
+  font-weight: 600;
+}
+
+.number {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.definitions {
+  display: grid;
+  gap: 10px;
+  margin: 16px 0 0;
+  font-size: 0.9rem;
+}
+
+.definitions dt {
+  font-weight: 600;
+}
+
+.definitions dd {
+  margin: 0;
+  color: var(--muted);
+}
+
+.importance {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.importance li {
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr) 3.5rem;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+}
+
+.importance .bar {
+  display: block;
+  margin: 0;
+}
+
+.importance-value {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.limits {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 20px;
+}
+
 @media (max-width: 760px) {
   main {
     grid-template-columns: minmax(0, 1fr);
@@ -265,5 +395,15 @@ button:disabled {
   .checks,
   .actions {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* The name moves above its bar. */
+  .importance li {
+    grid-template-columns: minmax(0, 1fr) 3.5rem;
+    gap: 2px 12px;
+  }
+
+  .importance-name {
+    grid-column: 1 / -1;
   }
 }
