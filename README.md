@@ -4,6 +4,9 @@ IT3051 Fundamentals of Data Mining project.
 
 ## Local setup
 
+[SETUP.md](SETUP.md) has the complete step-by-step guide, including the
+backend and the website. The steps below cover the notebooks and the models.
+
 Run every command from the project folder.
 
 1. Create and activate a virtual environment (Python 3.13):
