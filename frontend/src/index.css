@@ -1,0 +1,63 @@
+:root {
+  --background: #f4f6f8;
+  --surface: #ffffff;
+  --border: #d5dbe1;
+  --text: #17212b;
+  --muted: #5b6875;
+  --accent: #0f6b5c;
+  --accent-text: #ffffff;
+  --bar: #0e9480;
+  --hero-start: #0f6b5c;
+  --hero-end: #0b4a5e;
+  --chip-selected: #e3f3ef;
+  --warning-background: #fff5db;
+  --warning-text: #6b4a00;
+  --error-background: #fdeaea;
+  --error-text: #8f1d1d;
+
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--background);
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #12171c;
+    --surface: #1b2229;
+    --border: #36414c;
+    --text: #e8edf1;
+    --muted: #9aa7b3;
+    --accent: #4cc2ac;
+    --accent-text: #06221d;
+    --bar: #1fa08a;
+    --hero-start: #124a42;
+    --hero-end: #0f3344;
+    --chip-selected: #17403a;
+    --warning-background: #3a2f10;
+    --warning-text: #f3d68a;
+    --error-background: #3d1a1a;
+    --error-text: #f5b5b5;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* Present for screen readers and the keyboard, but not drawn. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

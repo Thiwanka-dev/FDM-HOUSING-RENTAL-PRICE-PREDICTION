@@ -14,6 +14,7 @@ Run from the repository root:
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 
 import numpy as np
@@ -24,6 +25,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 TRAIN_PATH = PROJECT_ROOT / "data" / "raw_train.csv"
 TEST_PATH = PROJECT_ROOT / "data" / "raw_test.csv"
+METRICS_PATH = PROJECT_ROOT / "models" / "test_metrics.json"
 
 # Configuration selected by cross-validation in 04_GradientBoosting_Janeesha.ipynb.
 # The package default differs, so it is passed explicitly.
@@ -130,7 +132,10 @@ def build_models(force: bool = False) -> None:
 
 
 def evaluate_models() -> None:
-    """Score every saved model on the untouched test set."""
+    """Score every saved model on the untouched test set.
+
+    The results are also written to ``test_metrics.json`` for the backend.
+    """
 
     test = pd.read_csv(TEST_PATH)
     X_test, y_test = test.drop(columns=["price"]), test["price"]
@@ -140,13 +145,19 @@ def evaluate_models() -> None:
         predictions = load().predict(X_test)
         rows.append({
             "Model": name,
-            "MAE": mean_absolute_error(y_test, predictions),
-            "RMSE": np.sqrt(mean_squared_error(y_test, predictions)),
-            "R2": r2_score(y_test, predictions),
+            "MAE": float(mean_absolute_error(y_test, predictions)),
+            "RMSE": float(np.sqrt(mean_squared_error(y_test, predictions))),
+            "R2": float(r2_score(y_test, predictions)),
         })
 
+    results = pd.DataFrame(rows).set_index("Model").round(4)
     print("\nTest-set performance of the saved models")
-    print(pd.DataFrame(rows).set_index("Model").round(4).to_string())
+    print(results.to_string())
+
+    METRICS_PATH.write_text(
+        json.dumps(results.to_dict(orient="index"), indent=2) + "\n", encoding="utf-8"
+    )
+    print(f"\nMetrics saved: {METRICS_PATH.relative_to(PROJECT_ROOT)}")
 
 
 def parse_args() -> argparse.Namespace:

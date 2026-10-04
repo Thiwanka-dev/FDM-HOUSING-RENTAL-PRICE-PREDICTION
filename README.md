@@ -4,6 +4,9 @@ IT3051 Fundamentals of Data Mining project.
 
 ## Local setup
 
+[SETUP.md](SETUP.md) has the complete step-by-step guide, including the
+backend and the website. The steps below cover the notebooks and the models.
+
 Run every command from the project folder.
 
 1. Create and activate a virtual environment (Python 3.13):
@@ -35,6 +38,27 @@ Run every command from the project folder.
    repository. The Random Forest file (about 270 MB) is too large for GitHub,
    so this command trains it (about one minute). `--evaluate-test` then scores
    all four saved models on `raw_test.csv`.
+
+## Website
+
+The website estimates the rent of a property with the Neural Network, and can
+also use or compare the other three models. Start the backend from the project
+folder:
+
+```
+uvicorn backend.app.main:app --reload
+```
+
+Then start the frontend in a second terminal and open http://localhost:5173:
+
+```
+cd frontend
+npm install
+npm run dev
+```
+
+The backend is in `backend/` (FastAPI) and the frontend in `frontend/`
+(React and TypeScript). Run the backend tests with `python -m pytest backend`.
 
 ## Models
 

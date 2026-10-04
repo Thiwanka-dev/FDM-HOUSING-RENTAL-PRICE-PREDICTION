@@ -1,0 +1,22 @@
+{
+  "Random Forest": {
+    "MAE": 161.4038,
+    "RMSE": 301.8411,
+    "R2": 0.7943
+  },
+  "Gradient Boosting": {
+    "MAE": 229.538,
+    "RMSE": 381.7509,
+    "R2": 0.671
+  },
+  "Neural Network": {
+    "MAE": 149.4815,
+    "RMSE": 274.9648,
+    "R2": 0.8293
+  },
+  "Ridge Regression": {
+    "MAE": 242.0052,
+    "RMSE": 399.3988,
+    "R2": 0.6399
+  }
+}
