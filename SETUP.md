@@ -116,4 +116,5 @@ unavailable until Step 4 is done.
 | `No module named 'fastapi'` or `'uvicorn'` | The virtual environment is not active, or `pip install -r backend/requirements.txt` was skipped. |
 | The website shows "The backend is not running" | Start the backend (Step 5) and reload the page. |
 | `npm install` hangs or fails with `UNABLE_TO_VERIFY_LEAF_SIGNATURE` | The network's firewall is inspecting the connection to the npm registry. Use another network, such as a home connection or a mobile hotspot. |
+| The map on the website is grey or empty | The map images are downloaded from OpenStreetMap, so the computer needs an internet connection. The state and region lists work without it. |
 | `Port 8000 is already in use` | Another backend is already running. Close it, or use that one. |

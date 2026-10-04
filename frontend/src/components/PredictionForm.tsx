@@ -2,6 +2,9 @@ import { useState } from 'react'
 import type { FormEvent } from 'react'
 import type { Metadata, ModelInfo, RentalFeatures } from '../api'
 import Icon from './Icon'
+import MapPicker from './MapPicker'
+import type { Point } from './MapPicker'
+import { locate } from '../geo'
 import { AMENITIES, formatDollars, optionLabel, regionLabel } from '../labels'
 
 interface Props {
@@ -15,7 +18,9 @@ interface Props {
 }
 
 // Square footage is kept as text so that the field can be empty while typing.
-type FormValues = Omit<RentalFeatures, 'sqfeet'> & { sqfeet: string }
+type FormValues = Omit<RentalFeatures, 'sqfeet' | 'lat' | 'long'> & { sqfeet: string }
+
+type MapView = { state: string; region: Point | null }
 
 function initialValues(metadata: Metadata): FormValues {
   return {
@@ -52,9 +57,15 @@ export default function PredictionForm({
   const [values, setValues] = useState(() => initialValues(metadata))
   const [modelId, setModelId] = useState(() => models.find((model) => model.default)!.id)
   const model = models.find((candidate) => candidate.id === modelId)!
+  // The exact point clicked on the map; null when only a region is chosen.
+  const [pin, setPin] = useState<Point | null>(null)
+  const [mapView, setMapView] = useState<MapView | null>(null)
+  const [outsideMap, setOutsideMap] = useState(false)
 
   const { sqfeet: sqfeetRange, beds: bedsRange, baths: bathsRange } = metadata.numeric
-  const regions = metadata.states.find((state) => state.code === values.state)?.regions ?? []
+  const state = metadata.states.find((candidate) => candidate.code === values.state)
+  const regions = state?.regions ?? []
+  const region = regions.find((candidate) => candidate.name === values.region)
 
   const sqfeet = Number(values.sqfeet)
   const sqfeetValid = values.sqfeet.trim() !== '' && sqfeet > 0
@@ -69,7 +80,31 @@ export default function PredictionForm({
   function selectState(code: string) {
     const stateRegions = metadata.states.find((state) => state.code === code)?.regions ?? []
     // A state with a single region needs no second choice.
-    update({ state: code, region: stateRegions.length === 1 ? stateRegions[0].name : '' })
+    const only = stateRegions.length === 1 ? stateRegions[0] : null
+    update({ state: code, region: only?.name ?? '' })
+    setPin(null)
+    setOutsideMap(false)
+    setMapView({ state: code, region: only })
+  }
+
+  function selectRegion(name: string) {
+    update({ region: name })
+    setPin(null)
+    setOutsideMap(false)
+    setMapView({ state: values.state, region: regions.find((item) => item.name === name)! })
+  }
+
+  // A click on the map sets the coordinates and fills in the state and region.
+  function pickOnMap(point: Point) {
+    const location = locate(metadata.states, point.lat, point.long)
+    setOutsideMap(location === null)
+    if (location === null) return
+    update(location)
+    setPin({ lat: Number(point.lat.toFixed(4)), long: Number(point.long.toFixed(4)) })
+  }
+
+  function features(): RentalFeatures {
+    return { ...values, sqfeet, ...pin }
   }
 
   function selectModel(id: string) {
@@ -79,7 +114,7 @@ export default function PredictionForm({
 
   function submit(event: FormEvent) {
     event.preventDefault()
-    if (complete) onEstimate({ ...values, sqfeet }, modelId)
+    if (complete) onEstimate(features(), modelId)
   }
 
   return (
@@ -91,6 +126,25 @@ export default function PredictionForm({
             Location
           </span>
         </legend>
+        <MapPicker
+          pin={pin ?? region ?? null}
+          state={values.state}
+          view={mapView}
+          onPick={pickOnMap}
+        />
+        {outsideMap ? (
+          <p className="note error">
+            That point is outside the areas the models know. Select a point in the United States.
+          </p>
+        ) : (
+          <p className="hint map-hint">
+            {pin && region && state
+              ? `Pin at ${pin.lat.toFixed(4)}, ${pin.long.toFixed(4)}, in ${regionLabel(region.name)}, ${state.name}.`
+              : region
+                ? `Using the typical location of ${regionLabel(region.name)}. Select a point on the map for the exact location.`
+                : 'Select the location of the property on the map, or choose a state and region below.'}
+          </p>
+        )}
         <div className="grid">
           <div className="field">
             <label htmlFor="state">State</label>
@@ -115,7 +169,7 @@ export default function PredictionForm({
               id="region"
               value={values.region}
               disabled={values.state === ''}
-              onChange={(event) => update({ region: event.target.value })}
+              onChange={(event) => selectRegion(event.target.value)}
             >
               <option value="" disabled>
                 {values.state === '' ? 'Select a state first' : 'Select a region'}
@@ -292,7 +346,7 @@ export default function PredictionForm({
           type="button"
           className="secondary"
           disabled={!complete || busy !== null}
-          onClick={() => onCompare({ ...values, sqfeet })}
+          onClick={() => onCompare(features())}
         >
           {busy === 'compare' ? 'Comparing…' : 'Compare all models'}
         </button>
