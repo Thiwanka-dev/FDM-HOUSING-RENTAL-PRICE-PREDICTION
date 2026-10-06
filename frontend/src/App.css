@@ -1,15 +1,51 @@
+/* Photos of homes behind the whole page */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  /* Behind the content, in front of the white page colour. */
+  z-index: -1;
+}
+
+.backdrop-photo {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.6s ease-in-out;
+}
+
+.backdrop-photo.shown {
+  opacity: 1;
+}
+
+/* The white panel in the middle of the page */
+
+.shell {
+  max-width: 1100px;
+  margin: 32px auto;
+  /* clip, not hidden: rounds the corners without stopping the result card
+     from staying in view while the page scrolls. */
+  overflow: clip;
+  background: #ffffff;
+  border: 1px solid rgb(255 255 255 / 0.7);
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgb(15 23 42 / 0.35);
+}
+
 .hero {
-  color: #ffffff;
-  background: linear-gradient(120deg, var(--hero-start), var(--hero-end));
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
 }
 
 .hero-inner {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 16px;
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 32px 16px;
+  gap: 12px;
+  padding: 32px 24px 28px;
+  text-align: center;
 }
 
 .hero-icon {
@@ -18,7 +54,8 @@
   flex: none;
   width: 56px;
   height: 56px;
-  background: rgb(255 255 255 / 0.16);
+  color: #ffffff;
+  background: var(--accent);
   border-radius: 14px;
 }
 
@@ -31,13 +68,12 @@
 .hero p {
   margin: 6px 0 0;
   max-width: 60ch;
-  color: rgb(255 255 255 / 0.85);
+  color: var(--muted);
 }
 
 .page {
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 24px 16px 48px;
+  padding: 24px;
+  background: #f5f8fd;
 }
 
 .icon {
@@ -54,6 +90,7 @@ main {
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
+  box-shadow: 0 4px 14px rgb(15 23 42 / 0.07);
   border-radius: 12px;
   padding: 24px;
 }
@@ -403,7 +440,26 @@ button.combobox-toggle {
   }
 }
 
+@media (max-width: 1164px) {
+  .shell {
+    margin: 16px;
+  }
+}
+
 @media (max-width: 480px) {
+  .shell {
+    margin: 10px;
+    border-radius: 14px;
+  }
+
+  .page {
+    padding: 12px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
   .hero-inner {
     padding: 24px 16px;
   }

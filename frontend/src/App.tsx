@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getMetadata, predictPrice } from './api'
 import type { Metadata, RentalFeatures } from './api'
+import Backdrop from './components/Backdrop'
 import Icon from './components/Icon'
 import PredictionForm from './components/PredictionForm'
 import ResultCard from './components/ResultCard'
@@ -41,36 +42,40 @@ export default function App() {
 
   return (
     <>
-      <header className="hero">
-        <div className="hero-inner">
-          <span className="hero-icon">
-            <Icon name="house" size={30} />
-          </span>
-          <div>
-            <h1>U.S. Rental Price Estimator</h1>
-            <p>
-              Estimate the monthly rent of a home anywhere in the United States, based on about
-              180,000 rental listings.
-            </p>
+      <Backdrop />
+      {/* One centred panel holds the header and the content. */}
+      <div className="shell">
+        <header className="hero">
+          <div className="hero-inner">
+            <span className="hero-icon">
+              <Icon name="house" size={30} />
+            </span>
+            <div>
+              <h1>U.S. Rental Price Estimator</h1>
+              <p>
+                Estimate the monthly rent of a home anywhere in the United States, based on about
+                180,000 rental listings.
+              </p>
+            </div>
           </div>
+        </header>
+
+        <div className="page">
+          {loadError && <p className="card note error">{loadError}</p>}
+          {!loadError && !metadata && <p className="card placeholder">Loading…</p>}
+
+          {metadata && (
+            <main>
+              <PredictionForm
+                metadata={metadata}
+                busy={busy}
+                onEstimate={estimate}
+                onChange={clearResult}
+              />
+              <ResultCard estimate={result} states={metadata.states} error={resultError} />
+            </main>
+          )}
         </div>
-      </header>
-
-      <div className="page">
-        {loadError && <p className="card note error">{loadError}</p>}
-        {!loadError && !metadata && <p className="card placeholder">Loading…</p>}
-
-        {metadata && (
-          <main>
-            <PredictionForm
-              metadata={metadata}
-              busy={busy}
-              onEstimate={estimate}
-              onChange={clearResult}
-            />
-            <ResultCard estimate={result} states={metadata.states} error={resultError} />
-          </main>
-        )}
       </div>
     </>
   )
