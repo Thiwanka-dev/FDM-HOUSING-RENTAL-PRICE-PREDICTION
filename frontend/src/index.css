@@ -1,19 +1,21 @@
 :root {
-  --background: #ffffff;
+  --background: #edf4fb;
   --surface: #ffffff;
-  --border: #d3dbe8;
-  --text: #131c2e;
-  --muted: #56647a;
-  --accent: #1d4ed8;
+  --border: #cfdaea;
+  --border-soft: #e5ebf4;
+  --text: #172238;
+  --muted: #5a6980;
+  --accent: #2171b5;
   --accent-text: #ffffff;
-  --bar: #2563eb;
-  --chip-selected: #e0eaff;
+  --bar: #2171b5;
+  --chip-selected: #e4efff;
+  --location: #f59e0b;
   --warning-background: #fff5db;
   --warning-text: #6b4a00;
   --error-background: #fdeaea;
   --error-text: #8f1d1d;
 
-  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  font-family: Inter, ui-sans-serif, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.5;
   color: var(--text);
   background: var(--background);

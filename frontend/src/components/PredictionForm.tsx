@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import type { FormEvent } from 'react'
+import type { FormEvent, ReactNode } from 'react'
 import type { Metadata, RentalFeatures } from '../api'
 import Combobox from './Combobox'
 import Icon from './Icon'
@@ -14,10 +14,15 @@ interface Props {
   busy: boolean
   onEstimate: (features: RentalFeatures) => void
   onChange: () => void
+  resultPanel: ReactNode
 }
 
-// Square footage is kept as text so that the field can be empty while typing.
-type FormValues = Omit<RentalFeatures, 'sqfeet' | 'lat' | 'long'> & { sqfeet: string }
+// Numeric inputs are kept as text so that fields can be empty while typing.
+type FormValues = Omit<RentalFeatures, 'sqfeet' | 'beds' | 'baths' | 'lat' | 'long'> & {
+  sqfeet: string
+  beds: string
+  baths: string
+}
 
 type MapView = { state: string; region: Point | null }
 
@@ -27,8 +32,8 @@ function initialValues(metadata: Metadata): FormValues {
     region: '',
     type: metadata.type[0],
     sqfeet: String(metadata.numeric.sqfeet.default),
-    beds: metadata.numeric.beds.default,
-    baths: metadata.numeric.baths.default,
+    beds: String(metadata.numeric.beds.default),
+    baths: String(metadata.numeric.baths.default),
     laundry_options: 'Unknown',
     parking_options: 'Unknown',
     cats_allowed: false,
@@ -40,19 +45,20 @@ function initialValues(metadata: Metadata): FormValues {
   }
 }
 
-function steps(min: number, max: number, step: number): number[] {
-  const count = Math.round((max - min) / step) + 1
-  return Array.from({ length: count }, (_, index) => min + index * step)
-}
-
-export default function PredictionForm({ metadata, busy, onEstimate, onChange }: Props) {
+export default function PredictionForm({
+  metadata,
+  busy,
+  onEstimate,
+  onChange,
+  resultPanel,
+}: Props) {
   const [values, setValues] = useState(() => initialValues(metadata))
   // The exact point clicked on the map; null when only a region is chosen.
   const [pin, setPin] = useState<Point | null>(null)
   const [mapView, setMapView] = useState<MapView | null>(null)
   const [outsideMap, setOutsideMap] = useState(false)
 
-  const { sqfeet: sqfeetRange, beds: bedsRange, baths: bathsRange } = metadata.numeric
+  const { sqfeet: sqfeetRange } = metadata.numeric
   const state = metadata.states.find((candidate) => candidate.code === values.state)
   const regions = state?.regions ?? []
   const region = regions.find((candidate) => candidate.name === values.region)
@@ -60,11 +66,21 @@ export default function PredictionForm({ metadata, busy, onEstimate, onChange }:
   const sqfeet = Number(values.sqfeet)
   const sqfeetValid = values.sqfeet.trim() !== '' && sqfeet > 0
   const sqfeetUnusual = sqfeetValid && (sqfeet < sqfeetRange.min || sqfeet > sqfeetRange.max)
-  const complete = values.state !== '' && values.region !== '' && sqfeetValid
+  const beds = Number(values.beds)
+  const baths = Number(values.baths)
+  const bedsValid = /^\d+$/.test(values.beds) && beds >= 0 && beds <= 8
+  const bathsValid = /^\d+$/.test(values.baths) && baths >= 0 && baths <= 8
+  const complete =
+    values.state !== '' && values.region !== '' && sqfeetValid && bedsValid && bathsValid
 
   function update(changes: Partial<FormValues>) {
     setValues((current) => ({ ...current, ...changes }))
     onChange()
+  }
+
+  function updateInteger(field: 'beds' | 'baths', value: string) {
+    // Ignore letters, signs, decimal points, and other non-integer characters.
+    if (/^\d*$/.test(value)) update({ [field]: value })
   }
 
   const stateOptions = metadata.states.map((item) => ({
@@ -116,7 +132,7 @@ export default function PredictionForm({ metadata, busy, onEstimate, onChange }:
   }
 
   function features(): RentalFeatures {
-    return { ...values, sqfeet, ...pin }
+    return { ...values, sqfeet, beds, baths, ...pin }
   }
 
   function submit(event: FormEvent) {
@@ -125,7 +141,10 @@ export default function PredictionForm({ metadata, busy, onEstimate, onChange }:
   }
 
   return (
-    <form className="card form" onSubmit={submit}>
+    <form id="estimate" className="estimator-card" onSubmit={submit}>
+      <h2 className="estimate-title">Get an estimate</h2>
+      <div className="estimator-workspace">
+        <div className="form-fields">
       <fieldset>
         <legend>
           <span className="legend-title">
@@ -133,25 +152,6 @@ export default function PredictionForm({ metadata, busy, onEstimate, onChange }:
             Location
           </span>
         </legend>
-        <MapPicker
-          pin={pin ?? region ?? null}
-          state={values.state}
-          view={mapView}
-          onPick={pickOnMap}
-        />
-        {outsideMap ? (
-          <p className="note error">
-            That point is outside the areas we cover. Select a point in the United States.
-          </p>
-        ) : (
-          <p className="hint map-hint">
-            {pin && region && state
-              ? `Pin at ${pin.lat.toFixed(4)}, ${pin.long.toFixed(4)}, in ${regionLabel(region.name)}, ${state.name}.`
-              : region
-                ? `Using the typical location of ${regionLabel(region.name)}. Select a point on the map for the exact location.`
-                : 'Select the location of the property on the map, or type or choose a state and region below.'}
-          </p>
-        )}
         <div className="grid">
           <div className="field">
             <label htmlFor="state">State</label>
@@ -214,31 +214,41 @@ export default function PredictionForm({ metadata, busy, onEstimate, onChange }:
           </div>
           <div className="field">
             <label htmlFor="beds">Bedrooms</label>
-            <select
+            <input
               id="beds"
+              type="text"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              required
               value={values.beds}
-              onChange={(event) => update({ beds: Number(event.target.value) })}
-            >
-              {steps(bedsRange.min, bedsRange.max, 1).map((beds) => (
-                <option key={beds} value={beds}>
-                  {beds === 0 ? '0 (studio)' : beds}
-                </option>
-              ))}
-            </select>
+              aria-invalid={!bedsValid}
+              aria-describedby={!bedsValid ? 'beds-error' : undefined}
+              onChange={(event) => updateInteger('beds', event.target.value)}
+            />
+            {!bedsValid && (
+              <p id="beds-error" className="field-error" role="alert">
+                Enter a whole number from 0 to 8.
+              </p>
+            )}
           </div>
           <div className="field">
             <label htmlFor="baths">Bathrooms</label>
-            <select
+            <input
               id="baths"
+              type="text"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              required
               value={values.baths}
-              onChange={(event) => update({ baths: Number(event.target.value) })}
-            >
-              {steps(bathsRange.min, bathsRange.max, 0.5).map((baths) => (
-                <option key={baths} value={baths}>
-                  {baths}
-                </option>
-              ))}
-            </select>
+              aria-invalid={!bathsValid}
+              aria-describedby={!bathsValid ? 'baths-error' : undefined}
+              onChange={(event) => updateInteger('baths', event.target.value)}
+            />
+            {!bathsValid && (
+              <p id="baths-error" className="field-error" role="alert">
+                Enter a whole number from 0 to 8.
+              </p>
+            )}
           </div>
         </div>
         {!sqfeetValid && <p className="note error">Enter a size greater than 0.</p>}
@@ -308,6 +318,33 @@ export default function PredictionForm({ metadata, busy, onEstimate, onChange }:
       <button type="submit" disabled={!complete || busy}>
         {busy ? 'Estimating…' : 'Estimate rent'}
       </button>
+        </div>
+
+        <div className="estimate-visuals">
+          <section className="map-panel" aria-label="Choose the property location">
+            <MapPicker
+              pin={pin ?? region ?? null}
+              state={values.state}
+              view={mapView}
+              onPick={pickOnMap}
+            />
+            {outsideMap ? (
+              <p className="note error">
+                That point is outside the areas we cover. Select a point in the United States.
+              </p>
+            ) : (
+              <p className="hint map-hint">
+                {pin && region && state
+                  ? `Pin at ${pin.lat.toFixed(4)}, ${pin.long.toFixed(4)}, in ${regionLabel(region.name)}, ${state.name}.`
+                  : region
+                    ? `Using the typical location of ${regionLabel(region.name)}. Select a point on the map for the exact location.`
+                    : 'Select the location on the map, or choose a state and region.'}
+              </p>
+            )}
+          </section>
+          {resultPanel}
+        </div>
+      </div>
     </form>
   )
 }
