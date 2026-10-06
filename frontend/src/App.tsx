@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import { getMetadata, predictPrice } from './api'
 import type { Metadata, RentalFeatures } from './api'
 import Backdrop from './components/Backdrop'
-import Icon from './components/Icon'
 import PredictionForm from './components/PredictionForm'
 import ResultCard from './components/ResultCard'
+import MarketInsights from './components/MarketInsights'
 import type { Estimate } from './components/ResultCard'
 import './App.css'
 
@@ -43,20 +43,20 @@ export default function App() {
   return (
     <>
       <Backdrop />
-      {/* One centred panel holds the header and the content. */}
       <div className="shell">
         <header className="hero">
           <div className="hero-inner">
-            <span className="hero-icon">
-              <Icon name="house" size={30} />
-            </span>
-            <div>
-              <h1>U.S. Rental Price Estimator</h1>
+            <div className="hero-copy">
+              <h1>Price every rental with confidence</h1>
               <p>
-                Estimate the monthly rent of a home anywhere in the United States, based on about
-                180,000 rental listings.
+                Get a data-informed monthly rent estimate, compare the property to similar rental
+                listings, and make clearer pricing decisions.
               </p>
+              <a className="hero-cta" href="#estimate">
+                Get an estimate <span aria-hidden="true">›</span>
+              </a>
             </div>
+            <div className="hero-image" role="img" aria-label="Modern rental home" />
           </div>
         </header>
 
@@ -71,8 +71,11 @@ export default function App() {
                 busy={busy}
                 onEstimate={estimate}
                 onChange={clearResult}
+                resultPanel={
+                  <ResultCard estimate={result} states={metadata.states} error={resultError} />
+                }
               />
-              <ResultCard estimate={result} states={metadata.states} error={resultError} />
+              <MarketInsights estimate={result} states={metadata.states} />
             </main>
           )}
         </div>
