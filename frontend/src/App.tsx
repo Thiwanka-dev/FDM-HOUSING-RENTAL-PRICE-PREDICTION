@@ -1,67 +1,36 @@
 import { useEffect, useState } from 'react'
-import { comparePrices, getMetadata, getModels, predictPrice } from './api'
-import type { Metadata, ModelInfo, Prediction, RentalFeatures } from './api'
-import AboutModels from './components/AboutModels'
-import ComparisonCard from './components/ComparisonCard'
+import { getMetadata, predictPrice } from './api'
+import type { Metadata, RentalFeatures } from './api'
 import Icon from './components/Icon'
 import PredictionForm from './components/PredictionForm'
 import ResultCard from './components/ResultCard'
+import type { Estimate } from './components/ResultCard'
 import './App.css'
 
-interface Reference {
-  metadata: Metadata
-  models: ModelInfo[]
-}
-
-const PAGES = [
-  { id: 'estimate', label: 'Estimate rent' },
-  { id: 'about', label: 'About the models' },
-] as const
-
-type Page = (typeof PAGES)[number]['id']
-
-type Result =
-  { kind: 'estimate'; prediction: Prediction } | { kind: 'compare'; predictions: Prediction[] }
-
 export default function App() {
-  const [reference, setReference] = useState<Reference | null>(null)
+  const [metadata, setMetadata] = useState<Metadata | null>(null)
   const [loadError, setLoadError] = useState<string | null>(null)
-  const [result, setResult] = useState<Result | null>(null)
+  const [result, setResult] = useState<Estimate | null>(null)
   const [resultError, setResultError] = useState<string | null>(null)
-  const [busy, setBusy] = useState<Result['kind'] | null>(null)
-  const [page, setPage] = useState<Page>('estimate')
+  const [busy, setBusy] = useState(false)
 
   useEffect(() => {
-    Promise.all([getMetadata(), getModels()])
-      .then(([metadata, models]) => setReference({ metadata, models }))
+    getMetadata()
+      .then(setMetadata)
       .catch((error: Error) => setLoadError(error.message))
   }, [])
 
-  async function run(kind: Result['kind'], request: () => Promise<Result>) {
-    setBusy(kind)
+  async function estimate(features: RentalFeatures) {
+    setBusy(true)
     setResultError(null)
     try {
-      setResult(await request())
+      setResult({ features, prediction: await predictPrice(features) })
     } catch (error) {
       setResult(null)
       setResultError((error as Error).message)
     } finally {
-      setBusy(null)
+      setBusy(false)
     }
-  }
-
-  function estimate(features: RentalFeatures, model: string) {
-    run('estimate', async () => ({
-      kind: 'estimate',
-      prediction: await predictPrice(features, model),
-    }))
-  }
-
-  function compare(features: RentalFeatures) {
-    run('compare', async () => ({
-      kind: 'compare',
-      predictions: await comparePrices(features),
-    }))
   }
 
   // A result no longer describes the form once an input changes.
@@ -80,51 +49,27 @@ export default function App() {
           <div>
             <h1>U.S. Rental Price Estimator</h1>
             <p>
-              Estimate the monthly rent of a home anywhere in the United States, using models built
-              from about 180,000 rental listings.
+              Estimate the monthly rent of a home anywhere in the United States, based on about
+              180,000 rental listings.
             </p>
           </div>
         </div>
       </header>
 
       <div className="page">
-        <nav aria-label="Pages">
-          {PAGES.map(({ id, label }) => (
-            <button
-              key={id}
-              type="button"
-              className="tab"
-              aria-current={page === id ? 'page' : undefined}
-              onClick={() => setPage(id)}
-            >
-              {label}
-            </button>
-          ))}
-        </nav>
-
         {loadError && <p className="card note error">{loadError}</p>}
-        {!loadError && !reference && <p className="card placeholder">Loading…</p>}
+        {!loadError && !metadata && <p className="card placeholder">Loading…</p>}
 
-        {reference && (
-          <>
-            {/* Hidden, not removed, so the form keeps its values between pages. */}
-            <main hidden={page !== 'estimate'}>
-              <PredictionForm
-                metadata={reference.metadata}
-                models={reference.models}
-                busy={busy}
-                onEstimate={estimate}
-                onCompare={compare}
-                onChange={clearResult}
-              />
-              {result?.kind === 'compare' ? (
-                <ComparisonCard models={reference.models} predictions={result.predictions} />
-              ) : (
-                <ResultCard prediction={result?.prediction ?? null} error={resultError} />
-              )}
-            </main>
-            {page === 'about' && <AboutModels models={reference.models} />}
-          </>
+        {metadata && (
+          <main>
+            <PredictionForm
+              metadata={metadata}
+              busy={busy}
+              onEstimate={estimate}
+              onChange={clearResult}
+            />
+            <ResultCard estimate={result} states={metadata.states} error={resultError} />
+          </main>
         )}
       </div>
     </>

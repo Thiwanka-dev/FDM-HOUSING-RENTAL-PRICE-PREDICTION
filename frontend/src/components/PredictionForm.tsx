@@ -1,19 +1,18 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
-import type { Metadata, ModelInfo, RentalFeatures } from '../api'
+import type { Metadata, RentalFeatures } from '../api'
+import Combobox from './Combobox'
 import Icon from './Icon'
 import MapPicker from './MapPicker'
 import type { Point } from './MapPicker'
 import { locate } from '../geo'
-import { AMENITIES, formatDollars, optionLabel, regionLabel } from '../labels'
+import { AMENITIES, optionLabel, regionLabel } from '../labels'
 
 interface Props {
   metadata: Metadata
-  models: ModelInfo[]
-  // The request that is in progress, if any.
-  busy: 'estimate' | 'compare' | null
-  onEstimate: (features: RentalFeatures, model: string) => void
-  onCompare: (features: RentalFeatures) => void
+  // An estimate is being requested.
+  busy: boolean
+  onEstimate: (features: RentalFeatures) => void
   onChange: () => void
 }
 
@@ -46,17 +45,8 @@ function steps(min: number, max: number, step: number): number[] {
   return Array.from({ length: count }, (_, index) => min + index * step)
 }
 
-export default function PredictionForm({
-  metadata,
-  models,
-  busy,
-  onEstimate,
-  onCompare,
-  onChange,
-}: Props) {
+export default function PredictionForm({ metadata, busy, onEstimate, onChange }: Props) {
   const [values, setValues] = useState(() => initialValues(metadata))
-  const [modelId, setModelId] = useState(() => models.find((model) => model.default)!.id)
-  const model = models.find((candidate) => candidate.id === modelId)!
   // The exact point clicked on the map; null when only a region is chosen.
   const [pin, setPin] = useState<Point | null>(null)
   const [mapView, setMapView] = useState<MapView | null>(null)
@@ -77,21 +67,43 @@ export default function PredictionForm({
     onChange()
   }
 
+  const stateOptions = metadata.states.map((item) => ({
+    value: item.code,
+    label: item.name,
+    keyword: item.code,
+  }))
+  // Before a state is chosen, every region can be searched, so each is listed
+  // with its state. The value holds both, because region names repeat.
+  const regionOptions = (state ? [state] : metadata.states).flatMap((item) =>
+    item.regions.map((option) => ({
+      value: `${item.code}|${option.name}`,
+      label: state ? regionLabel(option.name) : `${regionLabel(option.name)}, ${item.name}`,
+    })),
+  )
+
   function selectState(code: string) {
-    const stateRegions = metadata.states.find((state) => state.code === code)?.regions ?? []
+    const stateRegions = metadata.states.find((item) => item.code === code)?.regions ?? []
     // A state with a single region needs no second choice.
     const only = stateRegions.length === 1 ? stateRegions[0] : null
     update({ state: code, region: only?.name ?? '' })
     setPin(null)
     setOutsideMap(false)
-    setMapView({ state: code, region: only })
+    setMapView(code === '' ? null : { state: code, region: only })
   }
 
-  function selectRegion(name: string) {
-    update({ region: name })
+  function selectRegion(key: string) {
     setPin(null)
     setOutsideMap(false)
-    setMapView({ state: values.state, region: regions.find((item) => item.name === name)! })
+    if (key === '') {
+      update({ region: '' })
+      return
+    }
+    const [code, name] = key.split('|')
+    const chosen = metadata.states
+      .find((item) => item.code === code)!
+      .regions.find((item) => item.name === name)!
+    update({ state: code, region: name })
+    setMapView({ state: code, region: chosen })
   }
 
   // A click on the map sets the coordinates and fills in the state and region.
@@ -107,14 +119,9 @@ export default function PredictionForm({
     return { ...values, sqfeet, ...pin }
   }
 
-  function selectModel(id: string) {
-    setModelId(id)
-    onChange()
-  }
-
   function submit(event: FormEvent) {
     event.preventDefault()
-    if (complete) onEstimate(features(), modelId)
+    if (complete) onEstimate(features())
   }
 
   return (
@@ -134,7 +141,7 @@ export default function PredictionForm({
         />
         {outsideMap ? (
           <p className="note error">
-            That point is outside the areas the models know. Select a point in the United States.
+            That point is outside the areas we cover. Select a point in the United States.
           </p>
         ) : (
           <p className="hint map-hint">
@@ -142,44 +149,31 @@ export default function PredictionForm({
               ? `Pin at ${pin.lat.toFixed(4)}, ${pin.long.toFixed(4)}, in ${regionLabel(region.name)}, ${state.name}.`
               : region
                 ? `Using the typical location of ${regionLabel(region.name)}. Select a point on the map for the exact location.`
-                : 'Select the location of the property on the map, or choose a state and region below.'}
+                : 'Select the location of the property on the map, or type or choose a state and region below.'}
           </p>
         )}
         <div className="grid">
           <div className="field">
             <label htmlFor="state">State</label>
-            <select
+            <Combobox
               id="state"
+              options={stateOptions}
               value={values.state}
-              onChange={(event) => selectState(event.target.value)}
-            >
-              <option value="" disabled>
-                Select a state
-              </option>
-              {metadata.states.map((state) => (
-                <option key={state.code} value={state.code}>
-                  {state.name}
-                </option>
-              ))}
-            </select>
+              onChange={selectState}
+              noun="state"
+              placeholder="Type or choose a state"
+            />
           </div>
           <div className="field">
             <label htmlFor="region">Region</label>
-            <select
+            <Combobox
               id="region"
-              value={values.region}
-              disabled={values.state === ''}
-              onChange={(event) => selectRegion(event.target.value)}
-            >
-              <option value="" disabled>
-                {values.state === '' ? 'Select a state first' : 'Select a region'}
-              </option>
-              {regions.map((region) => (
-                <option key={region.name} value={region.name}>
-                  {regionLabel(region.name)}
-                </option>
-              ))}
-            </select>
+              options={regionOptions}
+              value={values.region === '' ? '' : `${values.state}|${values.region}`}
+              onChange={selectRegion}
+              noun="region"
+              placeholder="Type or choose a region"
+            />
           </div>
         </div>
       </fieldset>
@@ -250,7 +244,7 @@ export default function PredictionForm({
         {!sqfeetValid && <p className="note error">Enter a size greater than 0.</p>}
         {sqfeetUnusual && (
           <p className="note warning">
-            This size is outside the range of most listings the models were trained on (
+            This size is outside the range of most listings we have seen (
             {sqfeetRange.min.toLocaleString()} to {sqfeetRange.max.toLocaleString()} square feet).
             The estimate is less reliable.
           </p>
@@ -311,46 +305,9 @@ export default function PredictionForm({
         </div>
       </fieldset>
 
-      <fieldset>
-        <legend>
-          <span className="legend-title">
-            <Icon name="brain" />
-            Model
-          </span>
-        </legend>
-        <div className="field">
-          <label htmlFor="model">Prediction model</label>
-          <select id="model" value={modelId} onChange={(event) => selectModel(event.target.value)}>
-            {models.map((candidate) => (
-              <option key={candidate.id} value={candidate.id} disabled={!candidate.available}>
-                {candidate.name}
-                {candidate.default && ' (recommended)'}
-                {!candidate.available && ' (not installed)'}
-              </option>
-            ))}
-          </select>
-        </div>
-        {model.test_mae !== null && model.test_r2 !== null && (
-          <p className="hint">
-            Average test error {formatDollars(model.test_mae)}, R² {model.test_r2.toFixed(2)}.
-            {model.default && ' This model had the lowest error of the four.'}
-          </p>
-        )}
-      </fieldset>
-
-      <div className="actions">
-        <button type="submit" disabled={!complete || busy !== null}>
-          {busy === 'estimate' ? 'Estimating…' : 'Estimate rent'}
-        </button>
-        <button
-          type="button"
-          className="secondary"
-          disabled={!complete || busy !== null}
-          onClick={() => onCompare(features())}
-        >
-          {busy === 'compare' ? 'Comparing…' : 'Compare all models'}
-        </button>
-      </div>
+      <button type="submit" disabled={!complete || busy}>
+        {busy ? 'Estimating…' : 'Estimate rent'}
+      </button>
     </form>
   )
 }

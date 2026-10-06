@@ -102,9 +102,8 @@ All tests should pass. Tests that need a missing file are reported as skipped.
 
 ## If you only want to run the website
 
-Steps 3 and 4 can be skipped. The backend then runs with the Neural Network,
-Gradient Boosting and Ridge Regression models. The Random Forest is shown as
-unavailable until Step 4 is done.
+Steps 3 and 4 can be skipped. The website only uses the Neural Network, and
+its saved file is stored in git.
 
 ## Problems and fixes
 
