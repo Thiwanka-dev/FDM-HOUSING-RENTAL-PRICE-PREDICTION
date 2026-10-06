@@ -41,9 +41,9 @@ Run every command from the project folder.
 
 ## Website
 
-The website estimates the rent of a property with the Neural Network, and can
-also use or compare the other three models. Start the backend from the project
-folder:
+The website estimates the rent of a property with the Neural Network. The
+location is chosen on a map or by typing a state and region. Start the backend
+from the project folder:
 
 ```
 uvicorn backend.app.main:app --reload
